@@ -176,6 +176,143 @@ Many epistemic processes involve sensitive or confidential information. The arch
 
 This enables use cases such as confidential due diligence, private negotiation, and regulated environments where transparency must be selective rather than absolute. Privacy-preserving modes are treated as extensions of the same epistemic principles, not exceptions to them.
 
+4. Epistemic Claim Architecture Overview
+
+The Epistemic Claim Architecture (ECA) is designed to support reasoning, evaluation, and action in domains where truth cannot be reduced to a single canonical state. Rather than attempting to eliminate uncertainty or disagreement, the architecture provides a structured substrate for expressing claims, linking evidence, recording evaluations, and preserving the processes that connect them.
+
+At a high level, the architecture separates three distinct but interacting concerns:
+(1) the recording of claims,
+(2) the evaluation of those claims, and
+(3) the traceability of the processes through which claims are formed and acted upon.
+
+These concerns are implemented through three primary components: the Claim Ledger, the Neutral Witness, and the Flight Recorder. Each component has a clearly defined role and operates independently, yet their interaction produces an auditable and pluralistic epistemic system.
+
+The architecture is intentionally modular. None of the components presuppose a specific blockchain, storage backend, or AI model. This allows the system to be deployed incrementally, adapted to different risk profiles, and integrated into existing institutional or technical environments.
+
+4.1 System Diagram and Data Flows
+
+Conceptually, the Epistemic Claim Architecture can be understood as a loop rather than a pipeline. Claims are issued and recorded, evaluated against evidence and context, acted upon under policy constraints, and subsequently re-evaluated as new information becomes available. No step irreversibly overwrites the epistemic record.
+
+The Claim Ledger serves as the persistent layer. It stores claims as first-class objects, along with their metadata, evidentiary links, and relationships to other claims. The ledger does not determine truth; it preserves assertions and their evolution over time.
+
+The Neutral Witness operates as an evaluation layer external to the ledger. Given a claim, associated evidence, and relevant context, the witness produces a structured assessment indicating whether the claim is supported, contradicted, insufficiently specified, or unclear. Crucially, the witness records how it interpreted the claim and which materials informed its assessment.
+
+The Flight Recorder captures the procedural trace of reasoning and action. For AI-assisted systems, this includes model invocations, tool calls, retrieved artifacts, intermediate claims, and decision points. For human-in-the-loop processes, it may include structured annotations or checkpoints. These traces allow outcomes to be reconstructed, audited, and attributed without requiring that the underlying systems be perfectly reliable.
+
+Data flows between these components are explicit and directional. The ledger provides inputs to witnesses and agents. Witness reports and process traces are written back as new claims or attestations. Actions taken on the basis of claims generate additional trace data, which may later become evidence in subsequent evaluations.
+
+This separation ensures that no single component becomes an epistemic authority. The ledger does not evaluate, the witness does not decide, and the recorder does not judge. Authority emerges only through documented interaction among these parts.
+
+The following sections describe each component in detail, beginning with the Claim Ledger.
+
+4.2 Separation of Roles: Claim vs Evidence vs Witness Report
+
+A core design decision of the Epistemic Claim Architecture is the strict separation between claims, evidence, and witness reports. Although these elements are tightly related, conflating them leads to epistemic failure modes that are difficult to detect and impossible to audit after the fact.
+
+A claim is an assertion made by an identifiable issuer. It expresses a proposition about the world under a specified context, scope, and modality. Claims may be true or false, supported or unsupported, but the ledger itself does not assume any of these properties. Its role is to preserve the assertion as made, not to validate it.
+
+Evidence consists of artifacts offered in relation to a claim. Evidence does not speak for itself; it acquires meaning only in context and relative to an interpretation. The same evidence may support multiple claims, contradict others, or become irrelevant as assumptions change. For this reason, evidence is never embedded into claims as truth, but linked as a reference with preserved provenance and granularity.
+
+A witness report is an evaluation of a claim relative to a set of evidence, assumptions, and evaluation policies. Witnesses do not assert new facts about the world; they produce structured assessments about the relationship between claims and evidence. Crucially, a witness report must always declare how the claim was interpreted and under which constraints the evaluation was performed.
+
+Separating these roles prevents several common failure modes. When claims and evaluations are merged, subjective judgments are mistaken for objective facts. When evidence is overwritten by conclusions, minority interpretations and alternative readings are lost. When evaluators are allowed to modify claims directly, responsibility and accountability become blurred.
+
+The separation also enables pluralism. Multiple witnesses may evaluate the same claim differently, using different models, data sources, or policies. Their reports may agree, partially overlap, or directly conflict. All such outcomes are valid records. The system does not require reconciliation unless imposed by a downstream decision policy.
+
+This design mirrors established epistemic institutions. In legal systems, testimony, exhibits, and judgments are distinct objects with different rules of admissibility and authority. In scientific practice, experimental results, hypotheses, and peer reviews occupy separate roles. The Epistemic Claim Architecture formalizes this separation at the infrastructure level.
+
+By enforcing role separation, the architecture ensures that epistemic authority does not collapse into a single layer. Claims remain claims, evidence remains interpretable, and evaluations remain attributable judgments. This clarity is essential for traceability, disagreement preservation, and long-term auditability.
+
+4.3 Minimal Viable Platform Assumptions (fast, cheap, “good enough” security)
+
+The Epistemic Claim Architecture is designed to function under pragmatic constraints. It does not assume perfect security, universal trust, or ideal operating conditions. Instead, it is explicitly shaped to be deployable early, incrementally, and at low cost, while still delivering meaningful epistemic benefits.
+
+At a minimum, the platform assumes the availability of persistent storage, basic identity and signing mechanisms, and reliable timestamping. Strong cryptographic guarantees, decentralized consensus, or tamper-proof hardware are advantageous but not required for the architecture to be useful. The system remains valuable even when some components are operated in semi-trusted or centralized environments.
+
+This is a deliberate design choice. Epistemic robustness does not depend on eliminating all possible failures, but on making failures visible and attributable. A claim ledger running on conventional databases can already preserve competing claims, evidence links, and evaluation histories. Even if records can theoretically be altered, the architecture still improves over systems that overwrite disagreement entirely.
+
+Performance and cost are treated as first-class concerns. Claim creation, evidence linking, and witness evaluation must be fast enough to support real-world workflows, including automated agent interactions. Storage costs are minimized by favoring references, hashes, and summaries over raw data retention. Full artifacts may be stored off-chain or externally, with integrity verified through content addressing.
+
+Security guarantees are layered rather than absolute. Higher-risk deployments may incorporate stronger anchoring, distributed storage, or hardware-backed execution. Lower-risk or exploratory deployments may accept weaker guarantees in exchange for speed and flexibility. The architecture does not mandate a single security posture; it allows deployments to choose an appropriate point on the cost–assurance spectrum.
+
+Importantly, the system is resilient to partial compromise. If a witness is biased, its reports remain attributable. If a data source is poisoned, the resulting claims can be contested. If a storage backend fails, previously exported or anchored records retain evidentiary value. The architecture assumes that failures will occur and focuses on containing their epistemic impact rather than preventing them entirely.
+
+By adopting “good enough” security as a baseline, the Epistemic Claim Architecture lowers the barrier to adoption and experimentation. It allows organizations to begin capturing claims, evaluations, and process traces immediately, and to strengthen guarantees over time as requirements evolve. This incremental path is essential for adoption outside narrowly defined, high-assurance domains.
+
+The next section outlines the threat model assumed by the architecture and clarifies which classes of failure it is designed to expose, tolerate, or explicitly exclude.
+
+4.4 Threat Model at a Glance
+
+The Epistemic Claim Architecture is not designed to prevent all forms of failure, manipulation, or adversarial behavior. Instead, it is designed to make epistemically relevant failures observable, attributable, and contestable. This threat model reflects that priority.
+
+The architecture assumes that participants may be mistaken, biased, or strategically motivated. Claims may be false. Evidence may be incomplete, misleading, or selectively presented. Evaluators may disagree or apply flawed methodologies. These conditions are treated as normal operating assumptions rather than exceptional cases.
+
+Accordingly, the system does not attempt to guarantee correctness, truthfulness, or honesty. It does not prevent misinformation from being submitted, nor does it assume that any single evaluator, model, or institution is trustworthy by default. Its primary defense is transparency of process rather than exclusion of actors.
+
+The architecture is explicitly designed to expose the following classes of risk:
+
+Overclaiming: assertions presented without sufficient scope, context, or evidence.
+
+Ambiguity masking: forced interpretations that hide unresolved assumptions.
+
+Evaluator bias: systematic tendencies in witness reports, made visible through attribution and comparison.
+
+Evidence fragility: broken links, outdated sources, or contested provenance.
+
+Responsibility diffusion: outcomes without a traceable chain of reasoning or decision-making.
+
+At the same time, the architecture does not aim to fully mitigate certain threats. These include collusion among participants, coordinated misinformation campaigns, or coercive external pressures. While such behaviors may leave detectable traces within the system, preventing them entirely is outside the scope of the infrastructure.
+
+Security breaches and data tampering are similarly treated as contingent risks rather than absolute failures. If records are altered, missing, or compromised, the architecture focuses on preserving evidence of inconsistency and maintaining the ability to contest affected claims. Stronger guarantees, such as tamper-evident logs or cryptographic anchoring, may be layered on top where required but are not assumed universally.
+
+This threat model reflects a broader design philosophy: epistemic systems should prioritize auditability over invulnerability. In environments where uncertainty and disagreement are unavoidable, the ability to reconstruct how a conclusion was reached is often more valuable than the ability to assert that it cannot be questioned.
+
+With this threat model established, the paper now turns to the detailed design of the first core component of the architecture: the Claim Ledger.
+
+5. Claim Ledger
+
+The Claim Ledger is the persistent substrate of the Epistemic Claim Architecture. Its role is to record claims as first-class objects, along with their context, provenance, and relationships, without asserting their correctness or forcing convergence toward a single canonical state.
+
+Unlike traditional ledgers, the Claim Ledger does not encode truth as state. It encodes assertions as artifacts. Its primary function is preservation rather than validation: to ensure that claims, supporting materials, and subsequent evaluations remain inspectable over time, even as interpretations change.
+
+The ledger is intentionally conservative in what it assumes and permissive in what it records. It enforces structural requirements for admissibility, attribution, and traceability, but delegates judgment, ranking, and decision-making to external evaluators and policies. This separation allows the ledger to remain neutral while supporting a wide range of epistemic workflows.
+
+At a conceptual level, the Claim Ledger can be understood as a graph rather than a chain. Claims reference evidence, relate to other claims, and accumulate evaluations and revisions. No operation irreversibly overwrites prior assertions. New information extends the graph; it does not collapse it.
+
+The following sections describe the data model, linking semantics, and operational properties of the Claim Ledger in detail, beginning with the structure of an individual claim.
+
+5.1 Claim Data Model
+
+A claim is a structured assertion about the world, issued by an identifiable actor under specified conditions. The Claim Ledger represents claims explicitly rather than implicitly, making interpretive choices visible and auditable.
+
+At minimum, a claim consists of the following components:
+
+Proposition: a subject–predicate–object (S–P–O) triple expressing the core assertion.
+
+Context: qualifiers defining scope, such as time, location, domain, or version.
+
+Modality: the stance of the issuer (e.g., assertion, denial, hypothesis).
+
+Uncertainty: an explicit expression of confidence, range, or epistemic status.
+
+In addition, each claim includes metadata required for attribution and lifecycle management, such as:
+
+Claim identifier: a stable, unique reference.
+
+Issuer identity: cryptographically or institutionally attributable.
+
+Timestamp: indicating when the claim was made.
+
+Audience or sensitivity level (optional): constraining visibility or use.
+
+This model deliberately avoids embedding evaluation outcomes into the claim itself. A claim does not become “true” or “false” within the ledger. Instead, it becomes linked to evidence, counterclaims, and witness reports that collectively define its epistemic position.
+
+By enforcing explicit structure, the data model prevents common failure modes of natural language reasoning. Implicit scope becomes explicit scope. Vague assertions are either clarified or rendered inadmissible. Confidence is stated rather than inferred. What would otherwise be hidden assumptions are promoted to inspectable fields.
+
+The Claim Data Model is designed to be minimal but extensible. Domains may introduce additional fields or constraints, provided that the core distinction between assertion, evidence, and evaluation is preserved.
+
+Subsequent sections describe how claims are linked to evidence, versioned over time, and related to one another within the ledger graph.
+
 
 
 
