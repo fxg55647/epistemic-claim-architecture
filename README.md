@@ -826,6 +826,96 @@ These dimensions are intentionally orthogonal to correctness. A system may produ
 
 By focusing on these measures, evaluation aligns with the architecture’s core thesis: that epistemic quality is not solely a matter of arriving at the right answer, but of preserving the conditions under which answers can be justified, revised, and contested over time.
 
+9.2 Baselines: Single-Model Answers, Traditional Audit Logs, Human Review
+
+To evaluate the Epistemic Claim Architecture meaningfully, it must be compared against existing approaches that address similar problems with different structural assumptions. The following baselines represent common strategies for handling claims, evidence, and decision-making under uncertainty.
+
+Single-model answers.
+A common baseline in AI-assisted systems is the direct use of a single model to generate answers or judgments. Such systems typically produce fluent, self-consistent outputs without explicitly representing uncertainty, scope, or evidentiary gaps. While this approach can be efficient, it collapses interpretation, evidence selection, and conclusion into a single step. As a result, overclaiming and hallucinated justification are difficult to detect, and post hoc analysis is limited to inspecting the final output rather than the reasoning process.
+
+Traditional audit logs.
+Many systems rely on audit logs to provide accountability after decisions are made. These logs record actions, timestamps, and system events, but rarely capture the epistemic content of reasoning: which claims were assumed, how evidence was interpreted, or why a particular conclusion was reached. As a result, audits often reconstruct intent or rationale indirectly, leading to incomplete or contested explanations. Compared to the Flight Recorder, traditional logs preserve activity but not justification.
+
+Human review.
+Human experts are often treated as the gold standard for evaluating complex or ambiguous claims. While human review can surface nuance and contextual understanding, it scales poorly and is rarely repeatable. Decisions may be influenced by undocumented assumptions, cognitive bias, or institutional pressure. Without structured recording of claims, evidence, and evaluations, human judgments are difficult to compare, audit, or revisit over time.
+
+Each of these baselines addresses a subset of the problem. Single-model answers optimize for speed and coherence, traditional audit logs for operational accountability, and human review for contextual judgment. None preserve the full epistemic process across time while remaining scalable and attributable.
+
+The Epistemic Claim Architecture does not replace these approaches. Instead, it provides an infrastructural layer that exposes their assumptions, constrains their failure modes, and makes their outputs comparable. Single-model evaluations become witness reports rather than final answers. Human reviews become structured assessments rather than opaque authority. Audit logs become process traces tied to explicit claims.
+
+The next section outlines experimental protocols and pilot evaluations that can be used to compare these baselines under controlled conditions.
+
+9.3 Experimental Protocols and Pilot Evaluations
+
+Evaluation of the Epistemic Claim Architecture emphasizes process quality rather than outcome correctness. Accordingly, experimental protocols are designed to compare how different systems handle uncertainty, disagreement, and post hoc analysis, rather than how often they produce correct answers.
+
+Comparative Evaluation Setup
+
+Experiments are structured around matched tasks evaluated under three conditions:
+(1) single-model answer generation,
+(2) traditional systems augmented with audit logs, and
+(3) the Epistemic Claim Architecture with Claim Ledger, Neutral Witness, and Flight Recorder enabled.
+
+Tasks are selected to include ambiguity, incomplete evidence, or contested interpretation. Examples include factual claims with shifting scope, document-based assessments with partial relevance, and decision-making tasks requiring explicit assumptions.
+
+Metrics and Observables
+
+For each condition, the following observables are recorded:
+
+Claim traceability: whether the system can reconstruct which assumptions, evidence, and interpretations led to a conclusion.
+
+Overclaim frequency: instances where conclusions exceed evidentiary support or scope.
+
+Uncertainty handling: whether ambiguity results in explicit deferral or implicit resolution.
+
+Dispute resolution effort: time and steps required to identify the source of disagreement or error.
+
+These metrics are evaluated qualitatively and quantitatively where possible, focusing on differences in epistemic structure rather than raw accuracy.
+
+Pilot Evaluations
+
+Initial pilot evaluations focus on narrow, controlled workflows. For example, a set of document-based claims is evaluated by multiple witnesses under different policies. Outputs are compared for consistency, disagreement surfacing, and revisability. In agent-based scenarios, simulated contracts are executed under varying levels of uncertainty to observe escalation behavior and trace completeness.
+
+Where human reviewers are involved, their assessments are recorded both in unstructured form and through the Neutral Witness interface. This allows comparison between opaque expert judgment and structured, attributable evaluation.
+
+Reproducibility
+
+All evaluations are designed to be repeatable. Model versions, prompts, policies, and evidence sets are fixed or versioned. Process traces generated by the Flight Recorder allow runs to be replayed and compared. Where nondeterminism is unavoidable, its effects are documented rather than averaged away.
+
+Interpretation of Results
+
+Results are not interpreted as proofs of correctness or superiority. Instead, they are analyzed for structural differences: which systems expose assumptions, preserve disagreement, and support revision without loss of context. Failures are treated as data, contributing to refinement of schemas, policies, and evaluation procedures.
+
+Future work may extend these protocols to real-world deployments, including due diligence processes, agent-mediated negotiation, and scientific review workflows. Such evaluations would emphasize longitudinal analysis, examining how epistemic quality evolves over time rather than at a single decision point.
+
+9.4 Failure Modes and Limits
+
+(ambiguity, poisoned evidence, cost)
+
+The Epistemic Claim Architecture is not a universal solution to epistemic failure. It improves traceability, accountability, and revisability under uncertainty, but it does not eliminate ambiguity, adversarial behavior, or cost. This section outlines key limitations and failure modes.
+
+Irreducible ambiguity.
+Some claims cannot be resolved due to inherent vagueness, contested definitions, or underspecified reference classes. While the architecture makes such ambiguity explicit and prevents it from being silently collapsed, it cannot force convergence where none is warranted. In these cases, the system produces unclear or persistently contested evaluations, shifting the burden to policy or human judgment.
+
+Poisoned or adversarial evidence.
+The architecture does not prevent the introduction of misleading, fabricated, or strategically framed evidence. It mitigates the impact of such evidence by preserving provenance, enabling counterclaims, and supporting pluralistic evaluation, but it cannot guarantee detection. Adversarial actors may still exploit asymmetries in access, expertise, or incentives.
+
+Evaluator bias and model limitations.
+Neutral Witnesses, whether human or automated, may be biased, inconsistent, or systematically flawed. While pluralism and attribution make such biases observable over time, they do not eliminate them. The architecture surfaces evaluator behavior; it does not certify evaluator quality.
+
+Cost and complexity.
+Explicit claims, structured evaluation, and process recording introduce overhead. In low-stakes or time-critical scenarios, this overhead may outweigh epistemic benefits. The architecture is therefore most appropriate where the cost of unexamined error, dispute, or audit exceeds the cost of documentation and evaluation.
+
+Governance dependence.
+The value of the architecture depends on how policies are defined and applied. Poorly designed admissibility criteria, escalation rules, or access controls can negate epistemic gains. The system exposes governance choices; it does not replace them.
+
+No guarantee of agreement or correctness.
+Finally, the architecture does not guarantee that stakeholders will agree, nor that correct conclusions will be reached. It preserves disagreement and documents justification, but decisions made on top of the system may still be wrong or contested. Its contribution lies in making such outcomes inspectable rather than invisible.
+
+These limitations are not incidental; they follow from the architecture’s core commitment to process over finality. The system accepts that some uncertainty cannot be resolved and focuses instead on preserving the conditions under which claims can be evaluated, revised, and contested over time.
+
+
+
 
 
 
