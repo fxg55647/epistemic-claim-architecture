@@ -1,5 +1,4 @@
-# Truth as a Traceable Process: 
-# An Epistemic Claim Architecture for Agents, Evidence, and Pluralistic Evaluation
+# Truth as a Traceable Process: An Epistemic Claim Architecture for Agents, Evidence, and Pluralistic Evaluation
 
 Abstract
 
