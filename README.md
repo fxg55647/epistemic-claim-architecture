@@ -313,6 +313,120 @@ The Claim Data Model is designed to be minimal but extensible. Domains may intro
 
 Subsequent sections describe how claims are linked to evidence, versioned over time, and related to one another within the ledger graph.
 
+5.2 Evidence Linking (URLs, hashes, anchors, provenance)
+
+In the Claim Ledger, evidence is treated as a referenced artifact rather than embedded content. This design choice reflects the fact that evidence rarely has a single, stable interpretation and must remain accessible for re-evaluation as claims, contexts, and evaluators change.
+
+Evidence may take many forms, including documents, datasets, images, videos, sensor readings, transcripts, or external records. Regardless of format, evidence is linked to claims through explicit references that preserve identity, provenance, and granularity. The ledger does not assume that evidence is immutable or authoritative; it assumes only that references to evidence must be stable and inspectable.
+
+At a minimum, an evidence reference includes:
+
+a locator, such as a URL, content address, or storage identifier,
+
+a cryptographic hash or fingerprint, where available, to detect modification,
+
+a type or modality descriptor (e.g., document, observation, dataset, testimony),
+
+and provenance metadata, describing origin, authorship, or acquisition method.
+
+Where possible, evidence references may include anchors to specific fragments rather than entire artifacts. Page numbers, paragraph identifiers, timestamps, bounding boxes, or byte ranges allow claims to cite precisely what portion of an artifact is relevant. This avoids the common failure mode of citing large sources while relying on unstated interpretation.
+
+Evidence linking is many-to-many. A single piece of evidence may support multiple claims, contradict others, or become contested over time. Conversely, a claim may reference multiple evidentiary artifacts, each contributing partial support under different assumptions. The ledger preserves these relationships explicitly rather than collapsing them into a single judgment.
+
+Importantly, evidence is never consumed or invalidated by evaluation outcomes. When a claim is revised, rejected, or superseded, its evidence links remain intact. This allows downstream auditors, evaluators, or agents to revisit the evidentiary landscape and ask not only what was concluded, but why alternative interpretations were not adopted.
+
+The ledger does not require that evidence be publicly accessible. References may point to encrypted artifacts, confidential repositories, or controlled-access systems. In such cases, the ledger records the existence and identity of the evidence without disclosing its contents, enabling later verification under appropriate access conditions.
+
+Anchoring mechanisms may be used to strengthen temporal and integrity guarantees. Hashes or summaries of evidence references may be timestamped or anchored in external systems to establish that a given artifact existed in a particular form at a particular time. While such anchoring improves robustness, it is optional rather than foundational to the architecture.
+
+By separating evidence identity from evidence interpretation, the Claim Ledger enables durable reasoning across time, institutions, and evaluators. Evidence does not disappear when claims change. It remains available as a shared reference point for future disagreement, refinement, or corroboration.
+
+5.3 Claim Status and Versioning
+
+Claims recorded in the Claim Ledger are not static. As new evidence emerges, contexts shift, or interpretations are refined, claims may evolve. The architecture accommodates this evolution through explicit status indicators and versioning mechanisms that preserve history rather than overwrite it.
+
+Each claim carries a status reflecting its current epistemic position within the ledger. Typical statuses include proposed, contested, revised, superseded, retracted, or merged. These statuses do not assert correctness; they describe how the claim relates to subsequent claims and evaluations.
+
+Versioning is append-only. When a claim is modified, clarified, or narrowed in scope, a new claim is issued that references the prior version. The original claim remains intact and inspectable. This ensures that earlier assertions, including those later deemed flawed or misleading, are preserved as part of the epistemic record.
+
+Supersession and retraction are treated as explicit actions rather than silent updates. A claim that is retracted remains visible, along with the rationale for its retraction and the identity of the actor who performed it. This prevents the erasure of error and supports accountability and learning.
+
+Claims may also be merged or split. Multiple overlapping claims may be consolidated into a more precise formulation, or a broad claim may be decomposed into narrower assertions. These transformations are represented through explicit relationships rather than destructive edits.
+
+Temporal context is preserved across versions. Each claim reflects what was asserted at a particular moment, under particular assumptions, using the evidence available at that time. This enables time-sliced analysis, allowing evaluators to ask not only whether a claim is supported now, but whether it was reasonable given what was known then.
+
+By making change explicit, the Claim Ledger avoids a common failure mode of state-based systems: silent correction. Errors are not hidden by updates; they are documented. Revision becomes a signal of epistemic progress rather than an admission of failure.
+
+The following section introduces the semantic relationships between claims, enabling the construction of claim graphs that capture support, contradiction, refinement, and dependency.
+
+5.4 Claim Graph Semantics
+
+(supports / contradicts / refines / depends-on / derived-from)
+
+The Claim Ledger represents epistemic structure as a graph rather than a linear history. Claims are nodes within this graph, connected by explicitly typed relationships that describe how assertions relate to one another. These relationships encode meaning that would otherwise be implicit, disputed, or lost.
+
+At a minimum, the architecture supports the following relationship types:
+
+supports: indicates that one claim provides evidentiary or inferential support for another. Support does not imply sufficiency or correctness; it expresses directional relevance.
+
+contradicts: indicates that two claims cannot both hold under the same assumptions or scope. Contradiction is contextual and may dissolve if assumptions are refined.
+
+refines: indicates that a claim narrows, clarifies, or qualifies another claim without rejecting it. Refinement preserves continuity while increasing precision.
+
+depends-on: indicates that the validity or interpretation of a claim relies on another claim being accepted or provisionally assumed.
+
+derived-from: indicates that a claim is inferred or constructed from one or more other claims, possibly through an explicit reasoning or transformation process.
+
+These relationships are first-class objects. They are recorded explicitly, attributed to an issuer, and subject to evaluation like claims themselves. This avoids embedding semantic assumptions into undocumented inference logic.
+
+Graph semantics enable the system to localize disagreement. Rather than marking an entire conclusion as unsupported, evaluators can identify which supporting claims are weak, which dependencies are contested, or where contradictions arise. This granularity allows reasoning to proceed even when parts of the graph remain unstable.
+
+The graph structure also supports incremental reasoning. New claims may attach to existing structures without requiring global recomputation or consensus. As evidence accumulates or interpretations shift, only affected subgraphs need to be reconsidered.
+
+Importantly, the claim graph does not impose acyclicity or convergence. Cycles, competing derivations, and unresolved contradictions are permissible and expected. The goal is not to produce a single resolved tree, but to preserve the structure of reasoning as it unfolds over time.
+
+By encoding epistemic relationships explicitly, the Claim Ledger transforms disagreement and dependency from hidden liabilities into navigable structures. This enables both humans and machines to reason over contested domains without forcing premature closure.
+
+5.5 Identity and Signatures
+
+(DID / domain identity, roles, delegation)
+
+Claims, evidence links, and relationships in the Claim Ledger are only meaningful if they are attributable. The architecture therefore treats identity and signing not as optional metadata, but as foundational elements of epistemic accountability.
+
+Each claim is issued by an identifiable actor. Identity may be represented through decentralized identifiers (DIDs), domain-based identities, organizational keys, or other verifiable schemes appropriate to the deployment context. The architecture does not mandate a single identity standard; it requires only that identities be stable, referenceable, and verifiable within the system’s trust assumptions.
+
+All claims and claim relationships are cryptographically signed or otherwise authenticated by their issuer. Signatures bind the content of the claim, its context, and its metadata to the issuing identity at a specific point in time. This ensures that assertions cannot be silently altered without detection and that responsibility remains attributable even as claims evolve.
+
+Identity in the Claim Ledger is role-sensitive. An actor may issue claims, provide evidence, evaluate claims, or define admissibility policies under different roles. These roles are explicit rather than implicit, allowing downstream systems to distinguish between assertions, assessments, and procedural actions. Role separation prevents authority leakage, where evaluative power is mistaken for epistemic fact.
+
+Delegation is treated as a first-class concept. Actors may delegate claim issuance or evaluation authority to agents, institutions, or automated systems. Such delegation is explicitly recorded, scoped, and revocable. When an AI system issues a claim on behalf of an organization or individual, the ledger records both the agent and the delegator, preserving clarity of responsibility.
+
+The architecture does not assume that identities are truthful, honest, or persistent. Identities may be compromised, abandoned, or malicious. Rather than attempting to prevent such failures, the ledger makes their effects traceable. Patterns of behavior, conflicting claims, or systematic bias can be analyzed at the identity level without granting any identity intrinsic trust.
+
+By anchoring claims to explicit identities and signatures, the Claim Ledger transforms anonymity and authority into configurable design choices rather than implicit defaults. High-trust environments may rely on strong institutional identities, while open or adversarial settings may permit pseudonymity coupled with reputation or bonding mechanisms.
+
+This approach enables accountability without centralization. Authority emerges from documented action and evaluation, not from privileged control over the ledger itself.
+
+5.6 Anchoring and Storage
+
+(off-chain data, on-chain timestamps, portability)
+
+The Claim Ledger is storage-agnostic by design. It does not require that claims, evidence, or process traces reside on a specific blockchain or distributed storage system. Instead, it separates where data is stored from how it is identified, referenced, and anchored in time.
+
+Claims and their metadata may be stored in conventional databases, distributed object stores, content-addressed networks, or hybrid systems. Large or sensitive artifacts such as documents, images, videos, or full process logs are typically kept off-chain to reduce cost and support access control. The ledger records stable references to these artifacts rather than embedding them directly.
+
+Anchoring provides temporal integrity without enforcing semantic authority. Hashes or summaries of claims, evidence references, or ledger states may be timestamped or anchored into an external system, such as a blockchain or trusted timestamping service. Anchoring establishes that a specific assertion or artifact existed in a given form at a given time, without asserting that it is correct or complete.
+
+This distinction is critical. The blockchain is used as a clock and a witness of existence, not as a judge of truth. It strengthens auditability while avoiding the epistemic overreach of treating canonical chain state as authoritative meaning.
+
+Portability is a core requirement. Claim Ledgers must support export and import of claims, evidence references, and relationship graphs in canonical, versioned formats. This allows records to outlive any particular storage backend, vendor, or institution. Portability also enables parallel ledgers to interoperate, compare claims, or federate evaluations without requiring global consensus.
+
+The architecture supports layered durability. Lightweight deployments may rely on local storage and periodic backups. Higher-assurance deployments may combine replicated databases, content-addressed storage, and multiple independent anchors. These choices affect risk tolerance and cost but do not change the epistemic model.
+
+Importantly, anchoring is optional and contextual. Some claims require strong temporal guarantees; others do not. The absence of anchoring does not invalidate a claim, but it does affect how much weight downstream evaluators may assign to it. This allows temporal assurance to be treated as an explicit dimension of evaluation rather than a hidden assumption.
+
+By decoupling storage, anchoring, and meaning, the Claim Ledger avoids the false equivalence between durability and truth. Data can persist without being canonized, and history can be preserved without being frozen.
+
 
 
 
