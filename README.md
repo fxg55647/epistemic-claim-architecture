@@ -715,6 +715,103 @@ By enabling audit without exposure, the Flight Recorder reconciles two competing
 
 With this, the Flight Recorder component is fully specified. The architecture now turns from infrastructure to application, examining how these components enable concrete use cases across domains.
 
+8.1 Autonomous Agents and Contracts Under Uncertainty
+
+Autonomous agents are increasingly deployed to negotiate, decide, and act on behalf of humans and organizations. In practice, these agents operate under persistent uncertainty: incomplete information, ambiguous language, evolving conditions, and asymmetric incentives. Traditional systems address this by forcing premature closure. An agent must either assert that a condition holds or decline to act entirely.
+
+This binary posture does not reflect how complex agreements are formed in the real world. Human contracts routinely encode exceptions, contingencies, and negotiated risk. Their complexity is tolerated not because all participants fully understand every clause, but because responsibility, revision, and enforcement are institutionally supported. Software systems operate under a similar premise: modern codebases are vast and rarely read in full, yet they remain operable because changes are versioned, failures are attributable, and behavior is observable.
+
+The Epistemic Claim Architecture extends this logic to autonomous agents. Instead of requiring agents to agree on a single interpretation of reality, it allows them to negotiate over claims with explicit scope, uncertainty, and evidentiary grounding. Contractual conditions may be expressed as competing or conditional claims rather than as hard predicates. Risk is not eliminated; it is represented.
+
+This enables a class of agreements that are structurally difficult under Boolean systems. Agents may enter contracts where obligations are triggered by evaluated claims rather than fixed facts. Multiple interpretations may coexist, with policies specifying which evaluations are sufficient for action. Disagreement does not block execution; it shapes pricing, collateralization, insurance, or escalation.
+
+Crucially, this does not require agents to “understand everything”. It requires that they record what they assumed, which claims they relied upon, and under which policies they acted. The Flight Recorder preserves this process, enabling responsibility to be assigned when outcomes diverge from expectations. Failures become diagnosable rather than mysterious.
+
+The Neutral Witness further constrains agent behavior by removing the structural pressure to fabricate certainty. When an agent cannot justify a claim under available evidence, it may return insufficient or unclear evaluations without halting the broader process. This allows agents to proceed cautiously, defer decisions, or renegotiate scope instead of inventing support to satisfy a binary condition.
+
+In this model, contractual complexity is not a liability. It is a natural consequence of operating under uncertainty with traceability. Agreements become executable not because they are simple, but because their epistemic foundations are explicit and auditable.
+
+Autonomous agents operating under the Epistemic Claim Architecture do not pretend to know the truth. They act on documented claims, under declared assumptions, with responsibility preserved for later review. This enables coordination without requiring certainty, and automation without surrendering accountability.
+
+8.2 Confidential Due Diligence and Continuous Audit
+
+Due diligence is an epistemic process constrained by asymmetric information. One party possesses sensitive knowledge that cannot be fully disclosed without risk, while the other must assess credibility, consistency, and risk exposure under incomplete visibility. Traditional approaches resolve this tension poorly: either information is withheld and trust is demanded, or disclosure is excessive, costly, and irreversible.
+
+Boolean systems exacerbate this problem. They encourage snapshot-based judgments that collapse complex evidentiary landscapes into a single accept or reject decision. Once a transaction closes, the epistemic context that justified it is often lost. Disputes that arise later are adjudicated without a durable record of what was known, claimed, or evaluated at the time.
+
+The Epistemic Claim Architecture enables a different mode of due diligence: claim-centric, confidential, and continuous. Instead of exchanging documents wholesale, parties exchange and evaluate claims supported by evidence that may remain private. Neutral Witnesses assess admissibility and support within declared scopes, while the Claim Ledger preserves the structure of assertions and counterclaims without forcing disclosure.
+
+Confidential evaluation modes allow sensitive evidence to be examined under controlled access or secure execution environments. The ledger records attestations of evaluation, scope declarations, and methodological constraints rather than raw content. This enables trust without exposure: a counterparty can see that a claim was evaluated and how, without seeing what was revealed.
+
+A critical advantage of this approach is temporal traceability. Claims and evaluations are timestamped and versioned, enabling time-sliced analysis of knowledge states. In the event of a dispute, auditors can reconstruct not only the final decision, but the epistemic basis on which it was reasonable at the time. This capability is largely absent from conventional due diligence workflows.
+
+The same architecture applies beyond mergers and acquisitions. Investment pitches, grant applications, invention disclosures, and patent pre-evaluations all involve similar asymmetries. In each case, the party presenting information must balance protection against credibility, while the evaluating party must form judgments under uncertainty. By treating these situations as epistemic asymmetry problems rather than disclosure problems, the architecture generalizes across domains.
+
+Continuous audit emerges naturally from this model. Claims are not frozen at transaction boundaries; they persist and evolve. New evidence, revised assumptions, or emerging contradictions can trigger re-evaluation under policy-defined thresholds. Trust becomes an ongoing relationship rather than a one-time clearance.
+
+By preserving claims, evaluations, and process traces under confidentiality constraints, the Epistemic Claim Architecture transforms due diligence from a destructive, one-off exchange into a durable, auditable process. Decisions remain possible, but they no longer erase the reasoning that made them defensible.
+
+8.3 Research and Citation Integrity
+
+(claims over citations, open science, publication velocity)
+
+Scientific publishing is organized around artifacts rather than assertions. Papers are treated as terminal units of knowledge, while the claims they contain are embedded, compressed, and socially stabilized through citation. This structure obscures interpretation, slows correction, and conflates authority with epistemic justification.
+
+Citations point to documents, not to claims. They rarely specify which assertion is supported, under which assumptions, or with what degree of uncertainty. As a result, disagreement is displaced rather than documented. Competing interpretations of the same result are scattered across publications, and subsequent readers must reconstruct epistemic structure informally, if at all.
+
+The Epistemic Claim Architecture reframes scientific communication around claims as first-class objects. Assertions are recorded explicitly, linked to specific evidence fragments, and evaluated under stated scopes. Multiple interpretations of the same result may coexist, each supported or contested by distinct evaluations. Disagreement becomes visible data rather than an implicit social signal.
+
+This model aligns naturally with open science principles. Transparency is no longer limited to sharing datasets or code; it extends to sharing interpretation. Corrections and refinements are appended rather than hidden in errata or subsequent papers. A claim may be narrowed, superseded, or contested without invalidating the surrounding work or its contributors.
+
+Publication, in this context, becomes an event within a longer epistemic process rather than a terminal state. Claims may be released incrementally, evaluated continuously, and revised as evidence accumulates. The social cost of correction decreases because revision is an expected operation, not an admission of failure.
+
+This shift also affects publication velocity. Faster dissemination does not arise from lowering standards, but from decoupling evaluation from finality. Claims can be made admissible and inspectable early, with uncertainty made explicit, while more robust evaluation proceeds in parallel. The result is not more noise, but finer-grained epistemic resolution over time.
+
+By preserving claims, evidence links, and evaluations as durable, inspectable artifacts, the architecture supports scientific progress without requiring premature consensus. Knowledge advances not by freezing conclusions, but by maintaining a traceable record of how claims were formed, challenged, and refined.
+
+In this sense, research integrity is strengthened not by enforcing correctness, but by preserving epistemic process. Open science becomes not merely a matter of access, but of structure.
+
+8.4 Additional Domains (Brief)
+
+Beyond the primary use cases discussed above, the Epistemic Claim Architecture applies to a broader class of domains characterized by contested information, asymmetric knowledge, and the need for durable justification rather than absolute certainty.
+
+Governance and policy-making: documenting the claims, assumptions, and evidence underlying decisions, enabling post hoc accountability without requiring consensus on outcomes.
+
+Insurance and risk pricing: expressing uncertainty, exclusions, and contingent claims explicitly, allowing risks to be priced, transferred, or insured rather than obscured.
+
+Journalism and source protection: separating claims from sources while preserving provenance and evaluative context, enabling verification without forced disclosure.
+
+Dispute resolution and arbitration: preserving competing narratives, evidence, and expert assessments without collapsing them into a single authoritative record.
+
+Weak-institution trade and compliance: enabling trust and coordination where legal enforcement is limited, by preserving traceable claims and evaluations across parties.
+
+In each of these domains, the central requirement is not a single authoritative truth, but a durable, inspectable record of how claims were made, evaluated, and acted upon under uncertainty.
+
+9. Evaluation
+
+The Epistemic Claim Architecture does not aim to maximize correctness or eliminate disagreement. Accordingly, its evaluation cannot be reduced to accuracy metrics or binary success rates. Instead, evaluation focuses on whether the architecture improves the structure and usability of reasoning under uncertainty.
+
+This section outlines what can be meaningfully measured, which baselines are appropriate, and which failure modes remain inherent.
+
+9.1 What to Measure: Traceability, Overclaiming, Calibration, Dispute Cost
+
+Evaluation of the architecture centers on four primary dimensions, each corresponding to a failure mode common in Boolean, state-based systems.
+
+Traceability.
+The ability to reconstruct how a claim or decision was produced, including the claims relied upon, evidence consulted, evaluations performed, and policies applied. Traceability can be assessed by measuring the completeness and consistency of process traces, as well as the effort required to answer questions such as “Why was this action taken?” or “Which assumption proved incorrect?”
+
+Overclaiming.
+The tendency of agents or systems to assert conclusions beyond what available evidence supports. Overclaiming can be measured by comparing claim scope and confidence against subsequent evaluations or counterclaims. A reduction in unsupported definitive assertions, particularly in the presence of ambiguity, is a key indicator of improved epistemic discipline.
+
+Calibration.
+The alignment between expressed uncertainty and downstream outcomes. Calibration is not measured as predictive accuracy, but as consistency between stated confidence, admissibility thresholds, and later revisions or disputes. Well-calibrated systems are expected to revise claims proportionally rather than oscillate between certainty and retraction.
+
+Dispute cost.
+The time, effort, and informational loss involved in resolving disagreements or failures. This includes the cost of audits, incident reviews, or contractual disputes. Architectures that preserve claims, evidence, and process traces are expected to reduce dispute cost by enabling faster root-cause analysis and narrowing the scope of contention.
+
+These dimensions are intentionally orthogonal to correctness. A system may produce incorrect claims while still scoring well on traceability and calibration. Conversely, a system that occasionally produces correct outcomes but cannot explain or contest them performs poorly under this framework.
+
+By focusing on these measures, evaluation aligns with the architecture’s core thesis: that epistemic quality is not solely a matter of arriving at the right answer, but of preserving the conditions under which answers can be justified, revised, and contested over time.
 
 
 
