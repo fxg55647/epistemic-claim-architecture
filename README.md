@@ -495,21 +495,34 @@ The next section describes how multiple witnesses, models, and methodologies may
 
 (and why it reduces unexamined errors)
 
-The Neutral Witness employs a triple stateless evaluation pattern to reduce unexamined error and structural hallucination. The term stateless refers to the absence of commitment to prior conclusions, narrative continuity, or task completion pressure across evaluation steps. Each step operates independently over explicit inputs and produces an attributable output.
+The Neutral Witness employs a triple stateless evaluation pattern to reduce unexamined error and structurally induced hallucination. Stateless refers to the absence of commitment to prior conclusions, narrative continuity, or task completion pressure across evaluation steps. Each step operates independently over explicit inputs and produces an attributable intermediate result.
 
-The three evaluative perspectives are conceptually distinct:
+Rather than asking a single system to decide whether a claim is true, the evaluation deliberately separates three epistemically distinct questions and prevents them from collapsing into a single narrative.
 
-Interpretive evaluation examines how the claim is understood under declared scope and assumptions.
+The three evaluation stages are as follows:
 
-Evidentiary evaluation examines the relationship between the interpreted claim and the referenced evidence.
+Interpretive evaluation.
+The witness first determines how the claim is understood under declared scope and assumptions. Ambiguities in language, reference class, temporal bounds, or modality are surfaced explicitly. If the claim cannot be meaningfully interpreted without introducing substantial assumptions, this is recorded as such and may halt further evaluation.
 
-Consistency evaluation examines internal coherence, contradiction, and alignment between claim structure, evidence citations, and stated conclusions.
+Support-seeking evaluation.
+Given the interpreted claim, the witness then asks: Does the available evidence support this claim under the stated assumptions?
+This step actively searches for evidentiary support, citing specific fragments and articulating how they relate to the claim. Importantly, support is assessed relative to scope and interpretation, not as a global judgment of truth.
 
-Each perspective is applied without inheriting the conclusions of the others. No step assumes that a coherent narrative must be maintained across the evaluation as a whole. This deliberate decoupling interrupts a common failure mode in AI-assisted reasoning: the tendency to preserve internal consistency by inventing missing support or smoothing over gaps.
+Counter-evidence and contradiction evaluation.
+Independently of the support-seeking step, the witness asks a second, asymmetric question: Is there evidence, or a reasonable interpretation of the same evidence, that fails to support or contradicts the claim?
+This step explicitly searches for gaps, counterexamples, conflicting interpretations, or scope mismatches. The absence of contradiction is itself a recorded outcome, rather than an implicit assumption.
 
-In conventional AI workflows, models are incentivized to complete tasks with a unified answer. Ambiguity, partial evidence, or unresolved contradiction create pressure to resolve uncertainty implicitly in order to maintain fluency and coherence. This pressure is a primary driver of hallucinated claims: fluent outputs that satisfy narrative expectations without sufficient evidentiary grounding.
+Only after these stages are completed does the witness perform a consistency evaluation, comparing the results. At this stage, the witness examines whether support and counter-evidence coexist, whether tensions remain unresolved, and whether any assumptions introduced earlier materially affect the conclusion. The final assessment is derived from this comparison, not from any single step.
 
-Triple stateless evaluation removes this pressure. The witness is permitted, and structurally encouraged, to halt at any stage. A failure to interpret the claim cleanly, to locate relevant evidence, or to reconcile contradictions results in an explicit outcome rather than an improvised resolution. The system treats such outcomes as valid and informative.
+Crucially, no stage is permitted to inherit or optimize for coherence with the others. The witness is not rewarded for producing a unified narrative. If interpretation fails, if support is weak, or if contradictions cannot be reconciled, the evaluation terminates with an explicit outcome such as insufficient or unclear.
+
+This structure directly interrupts a common failure mode in AI-assisted reasoning. In conventional workflows, models are incentivized to complete tasks with a fluent, internally consistent answer. Ambiguity, partial evidence, or unresolved contradiction create pressure to implicitly resolve uncertainty in order to maintain coherence. This pressure is a primary driver of hallucinated claims: outputs that sound justified but lack adequate evidentiary grounding.
+
+Triple stateless evaluation removes this pressure by design. The obligation to “finish the story” is replaced with an obligation to expose where the story fails to close. Uncertainty, disagreement, and incompleteness become valid and informative results rather than errors to be smoothed over.
+
+This approach does not guarantee correctness. It reduces the likelihood that unsupported claims pass through evaluation unnoticed and localizes error when it occurs. Hallucinations are not eliminated, but the mechanism that produces them is structurally weakened.
+
+By separating interpretation, support, contradiction, and reconciliation into explicit, stateless steps, the Neutral Witness shifts AI from answer production to epistemic instrumentation. The system does not aim to be confident; it aims to be inspectable.
 
 This approach does not guarantee correctness. It reduces the probability that unsupported claims pass through evaluation unnoticed. Errors that do occur are more likely to be localized: tied to a specific interpretive assumption, evidentiary gap, or consistency failure, rather than diffused across a polished final answer.
 
