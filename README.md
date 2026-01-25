@@ -427,6 +427,196 @@ Importantly, anchoring is optional and contextual. Some claims require strong te
 
 By decoupling storage, anchoring, and meaning, the Claim Ledger avoids the false equivalence between durability and truth. Data can persist without being canonized, and history can be preserved without being frozen.
 
+6. Neutral Witness
+
+The Neutral Witness is the evaluation component of the Epistemic Claim Architecture. Its role is not to determine truth, but to produce attributable, structured assessments of claims relative to evidence, context, and declared evaluation policies.
+
+Unlike traditional validation mechanisms, the Neutral Witness does not collapse uncertainty into a binary outcome. It operates explicitly under epistemic constraints and records both its conclusions and the reasoning boundaries within which those conclusions were reached. In doing so, it enables claims to become admissible, auditable, and comparable without requiring agreement.
+
+The Neutral Witness may be implemented using human experts, automated systems, large language models, or combinations thereof. What defines a witness is not who or what performs the evaluation, but how the evaluation is framed, documented, and recorded.
+
+6.1 Question Restatement and Scope Declaration
+
+Every evaluation begins with interpretation. Before assessing evidence or producing a verdict, the Neutral Witness must explicitly restate how it understood the question or claim under evaluation. This restatement is not a formality; it is a core safeguard against hidden assumptions and misaligned scope.
+
+Natural language claims often underspecify critical dimensions such as temporal range, geographic scope, modality, or reference class. If these dimensions remain implicit, any subsequent evaluation risks answering a different question than the one intended. The Neutral Witness therefore declares its assumed scope, boundaries, and interpretation before proceeding.
+
+A restatement typically includes:
+
+the interpreted proposition being evaluated,
+
+any assumptions made to resolve ambiguity,
+
+excluded interpretations or scopes,
+
+and relevant constraints imposed by policy or available evidence.
+
+If a claim cannot be meaningfully restated without introducing substantial assumptions, the witness may classify it as insufficiently specified. This outcome is not treated as failure, but as a valid and informative evaluation result.
+
+By making interpretation explicit, the Neutral Witness shifts ambiguity from an invisible liability to a documented artifact. Disagreements about meaning can then be addressed directly, either by refining the claim or by issuing alternative evaluations under different stated assumptions.
+
+This practice mirrors established institutional procedures. Courts define the questions before examining evidence. Audits specify scope before analysis. Scientific reviews clarify hypotheses before testing. The Neutral Witness formalizes this step so that it cannot be skipped or silently improvised.
+
+With scope and interpretation declared, the witness can proceed to evaluate the relationship between the claim and its evidence. The next section specifies the output format of such evaluations and how they are recorded in the ledger.
+
+6.2 Evaluation Output Format
+
+(support / contradict / insufficient / unclear + confidence + citations)
+
+Evaluations produced by the Neutral Witness are recorded as structured outputs rather than free-form conclusions. This structure is essential for comparability, auditability, and downstream use by both humans and automated agents.
+
+Each witness report expresses an assessment of the relationship between a claim and its referenced evidence under the declared scope and assumptions. The evaluation outcome is intentionally coarse-grained, avoiding false precision while remaining operationally useful. At a minimum, the witness produces one of the following verdict categories:
+
+support: the available evidence provides meaningful support for the claim as interpreted.
+
+contradict: the available evidence conflicts with the claim under the stated assumptions.
+
+insufficient: the evidence is inadequate to assess the claim, or the claim is underspecified.
+
+unclear: the relationship between claim and evidence is ambiguous or interpretation-dependent.
+
+These categories are mutually exclusive but not exhaustive descriptions of epistemic state. They are designed to surface uncertainty explicitly rather than collapse it into a binary judgment.
+
+Each verdict is accompanied by an explicit confidence expression, reflecting the witness’s assessment of robustness relative to evidence quality, scope clarity, and methodological constraints. Confidence is not a probability of truth, but a statement about the stability of the evaluation under reasonable variation of assumptions.
+
+Crucially, all evaluations include explicit citations to the evidence fragments that informed the assessment. Citations reference specific artifacts or portions thereof, enabling independent verification and alternative interpretation. When no such references can be provided, the evaluation must state this absence explicitly.
+
+The witness report also records any material assumptions introduced during evaluation, including interpretive choices made to resolve ambiguity. These assumptions are treated as first-class elements of the report, allowing other witnesses to contest or reinterpret them without disputing the underlying claim.
+
+By allowing outcomes such as insufficient or unclear, the evaluation format removes the implicit requirement to reach a definitive conclusion. This interrupts a common failure mode in AI-assisted reasoning, where the pressure to produce a coherent and complete answer incentivizes unsupported extrapolation. The witness is permitted to stop, to defer, or to surface ambiguity as an explicit result.
+
+Witness reports are immutable once recorded. Subsequent evaluations do not overwrite earlier assessments; they accumulate alongside them. Over time, a claim may accrue multiple evaluations reflecting different evidence sets, policies, or perspectives.
+
+This structured output format enables downstream systems to reason about claims without inheriting the witness’s authority. Decisions may be made, thresholds applied, or actions taken, but the underlying evaluations remain available for audit and revision.
+
+The next section describes how multiple witnesses, models, and methodologies may be combined without forcing consensus, and why this pluralistic approach reduces unexamined error.
+
+6.3 Triple Stateless Evaluation
+
+(and why it reduces unexamined errors)
+
+The Neutral Witness employs a triple stateless evaluation pattern to reduce unexamined error and structural hallucination. The term stateless refers to the absence of commitment to prior conclusions, narrative continuity, or task completion pressure across evaluation steps. Each step operates independently over explicit inputs and produces an attributable output.
+
+The three evaluative perspectives are conceptually distinct:
+
+Interpretive evaluation examines how the claim is understood under declared scope and assumptions.
+
+Evidentiary evaluation examines the relationship between the interpreted claim and the referenced evidence.
+
+Consistency evaluation examines internal coherence, contradiction, and alignment between claim structure, evidence citations, and stated conclusions.
+
+Each perspective is applied without inheriting the conclusions of the others. No step assumes that a coherent narrative must be maintained across the evaluation as a whole. This deliberate decoupling interrupts a common failure mode in AI-assisted reasoning: the tendency to preserve internal consistency by inventing missing support or smoothing over gaps.
+
+In conventional AI workflows, models are incentivized to complete tasks with a unified answer. Ambiguity, partial evidence, or unresolved contradiction create pressure to resolve uncertainty implicitly in order to maintain fluency and coherence. This pressure is a primary driver of hallucinated claims: fluent outputs that satisfy narrative expectations without sufficient evidentiary grounding.
+
+Triple stateless evaluation removes this pressure. The witness is permitted, and structurally encouraged, to halt at any stage. A failure to interpret the claim cleanly, to locate relevant evidence, or to reconcile contradictions results in an explicit outcome rather than an improvised resolution. The system treats such outcomes as valid and informative.
+
+This approach does not guarantee correctness. It reduces the probability that unsupported claims pass through evaluation unnoticed. Errors that do occur are more likely to be localized: tied to a specific interpretive assumption, evidentiary gap, or consistency failure, rather than diffused across a polished final answer.
+
+Because each evaluation step is explicit and attributable, alternative witnesses may rerun the same process under different assumptions, models, or policies. Disagreement between witnesses becomes analyzable rather than opaque. Over time, patterns of divergence can be used to identify ambiguous claim structures, fragile evidence types, or systematic evaluator bias.
+
+Triple stateless evaluation therefore shifts the role of AI from answer production to epistemic instrumentation. The system does not aim to be confident; it aims to be inspectable. By breaking the obligation to maintain a coherent story and to reach forced closure, the architecture disrupts a key mechanism through which hallucinations typically arise.
+
+The next section extends this approach to pluralistic evaluation across multiple witnesses, models, and human participants, without collapsing disagreement into consensus.
+
+6.4 Pluralistic Evaluation
+
+(multi-model, human-in-the-loop, disagreement recording)
+
+The Epistemic Claim Architecture does not assume that a single evaluator, model, or methodology can adequately assess all claims. Instead of enforcing convergence, it supports pluralistic evaluation: the coexistence of multiple witness reports over the same claim, each operating under explicit assumptions and policies.
+
+Pluralism may take several forms. Multiple AI models may evaluate the same claim independently. Human experts may review claims alongside automated witnesses. Different witnesses may apply distinct evidence allowlists, risk tolerances, or domain-specific heuristics. None of these perspectives are privileged by default.
+
+Crucially, pluralism does not imply aggregation into a single verdict. The architecture records each witness report as a standalone assessment. Agreement is visible, but disagreement is preserved rather than averaged away. Where witnesses diverge, the system captures how and why they differ: in interpretation, evidence selection, or evaluative criteria.
+
+This approach contrasts with ensemble methods that seek consensus through voting or averaging. While such methods may improve predictive accuracy in some contexts, they obscure epistemic structure. Pluralistic evaluation prioritizes transparency over convergence. It allows downstream decision-makers to reason about disagreement explicitly, rather than inheriting a synthesized output whose internal tensions are hidden.
+
+Human-in-the-loop participation is treated as a natural extension of this model. Human reviewers do not override automated witnesses; they add another perspective with its own assumptions, expertise, and limitations. Their evaluations are recorded with the same structure and attribution as machine-generated reports, enabling comparison rather than substitution.
+
+Pluralistic evaluation also supports escalation without erasure. If automated witnesses return insufficient or unclear outcomes, or if their reports diverge materially, policies may trigger human review or additional evidence gathering. These interventions augment the epistemic record rather than replacing it.
+
+Over time, pluralism enables meta-evaluation. Patterns of agreement and disagreement across witnesses can reveal ambiguous claim formulations, fragile evidence types, or systematic biases in particular evaluators. Such insights are only possible when disagreement is preserved as data.
+
+By design, the architecture resists the temptation to crown a single epistemic authority. It replaces the question “Which answer is correct?” with “Which assessments exist, under which assumptions, and with what support?”. Decisions may still require thresholds or preferences, but they are applied atop a transparent landscape of evaluation rather than a forced consensus.
+
+The following section introduces the policy layer that governs how evaluations are used, escalated, or acted upon without collapsing pluralism into authority.
+
+6.5 Policy Layer and Escalation Rules
+
+While the Neutral Witness produces evaluations, it does not decide how those evaluations are used. Decisions are governed by a policy layer that sits explicitly above the epistemic substrate. This separation ensures that decision-making criteria do not retroactively redefine what counts as evidence, interpretation, or evaluation.
+
+Policies specify how witness reports may trigger actions, escalation, or further inquiry. These rules are contextual and purpose-driven. A low-risk application may proceed on a single support verdict with moderate confidence. A high-risk domain may require multiple independent witnesses, human review, or the absence of unresolved contradictions.
+
+Escalation rules are triggered by epistemic signals rather than failures. Outcomes such as insufficient, unclear, or material disagreement between witnesses are not treated as errors. Instead, they activate predefined responses: request additional evidence, narrow the claim scope, invoke specialized evaluators, or defer action entirely.
+
+Importantly, escalation does not overwrite prior evaluations. When a claim is refined or re-evaluated, the earlier witness reports remain part of the record. The policy layer consumes epistemic outputs; it does not edit them. This preserves a clear boundary between reasoning and governance.
+
+Policies may be deterministic or discretionary. Automated systems may apply fixed thresholds or rule sets. Human operators may exercise judgment within documented bounds. In both cases, the application of policy is itself recorded as a traceable action, enabling later review of not only what decision was made, but why it was permissible under the stated rules.
+
+Different stakeholders may apply different policies to the same underlying evaluations. An insurer, a regulator, and a counterparty may all reason over the same claim ledger and witness reports while reaching different decisions. This divergence is not a failure of the system; it is a feature of pluralistic governance.
+
+By externalizing decision logic into a policy layer, the architecture avoids a common failure mode in automated systems: embedding normative judgments into epistemic mechanisms. Evaluation remains about support and uncertainty; policy determines acceptable risk.
+
+The final section of this chapter addresses confidential and privacy-preserving evaluation modes, which extend the same principles into environments where disclosure must be constrained.
+
+6.6 Confidential Evaluation Modes
+
+(TEE / privacy constraints)
+
+Many epistemic processes involve information that cannot be fully disclosed without violating confidentiality, privacy, or regulatory constraints. The Epistemic Claim Architecture accommodates such environments by decoupling evaluation from disclosure, allowing claims to be assessed without requiring that underlying evidence be publicly revealed.
+
+In confidential evaluation modes, evidence may reside in restricted repositories, encrypted storage, or secure execution environments. The Neutral Witness is granted controlled access to such materials under explicit policies, while the Claim Ledger records only references, hashes, or attestations of evaluation rather than raw content.
+
+Trusted execution environments (TEEs) or secure enclaves may be used to constrain how evaluations are performed. In these modes, the witness executes within a bounded environment that limits data exfiltration and enforces policy-defined access controls. While TEEs are not assumed to be infallible, they provide an additional layer of assurance where required.
+
+Crucially, confidentiality does not exempt evaluation from traceability. Even when evidence content is hidden, the witness report records the scope of access, the categories of evidence consulted, the evaluation methodology applied, and the resulting verdict. This allows downstream parties to assess how an evaluation was conducted without learning what was examined.
+
+Selective disclosure mechanisms may further refine this model. Different audiences may be granted access to different slices of the epistemic record: some may see only final attestations, others may inspect methodology and assumptions, and authorized auditors may access full evidence under controlled conditions. These access tiers are explicit and policy-governed.
+
+Privacy-preserving evaluation modes reinforce the architecture’s core principles rather than weakening them. They preserve role separation, pluralism, and accountability while acknowledging that transparency is not binary. What matters is not universal visibility, but the ability to reconstruct and contest reasoning when appropriate access is granted.
+
+By supporting confidential evaluation, the architecture enables use cases such as due diligence, regulated decision-making, private negotiation, and sensitive research review. These domains require trust without disclosure and accountability without exposure—conditions under which Boolean truth systems typically fail.
+
+With the Neutral Witness fully specified, the paper now turns to the third core component of the Epistemic Claim Architecture: the Flight Recorder, which captures the procedural trace connecting claims, evaluations, and actions over time.
+
+7. Flight Recorder
+
+The Flight Recorder captures the procedural trace that connects claims, evaluations, and actions. Its purpose is not to validate outcomes, but to preserve the sequence of observations, inferences, tool interactions, and decisions that led to those outcomes.
+
+In complex systems, failures rarely originate from a single incorrect assertion. They emerge from interactions between data, tools, policies, and agents over time. Without a durable process trace, post hoc analysis collapses into speculation. The Flight Recorder provides a structured, append-only record that allows reasoning to be reconstructed rather than inferred.
+
+The Flight Recorder is conceptually distinct from the Claim Ledger. While the ledger preserves epistemic artifacts, the recorder preserves process. Together, they enable accountability without requiring that systems be infallible.
+
+7.1 Append-Only Process Trace
+
+(events, tool calls, retrieved hashes)
+
+The Flight Recorder maintains an append-only log of events generated during reasoning and action. Each event records what was observed, invoked, inferred, or decided at a specific point in time. Events are ordered but not interpreted by the recorder itself.
+
+At a minimum, the process trace includes:
+
+inputs received by an agent or evaluator,
+
+tool calls executed, including parameters and versions,
+
+retrieved artifacts, referenced by identifiers and hashes,
+
+intermediate claims or assumptions generated during reasoning,
+
+outputs produced, including decisions or recommendations,
+
+and timestamps marking event order.
+
+The recorder does not attempt to capture internal model states or latent representations. It records only externally meaningful actions and artifacts. This boundary keeps traces compact, interpretable, and portable across implementations.
+
+Append-only semantics are critical. Events are never deleted or overwritten. Corrections, retries, or reversals are recorded as additional events. This ensures that errors remain visible and that later outcomes can be understood in context rather than appearing as isolated results.
+
+Process traces may be generated by automated agents, human operators, or hybrid workflows. In all cases, events are attributed to an identity and, where applicable, to a delegated role. This attribution enables responsibility to be traced without presuming intent or fault.
+
+The Flight Recorder may operate at different granularities. High-risk workflows may record every tool invocation and evidence retrieval. Lower-risk contexts may sample or summarize events to control cost. These choices affect diagnostic resolution but do not alter the underlying model.
+
+By preserving the sequence of actions that produced a claim or decision, the Flight Recorder enables a shift from outcome-based blame to process-based analysis. Failures can be examined not as isolated errors, but as traceable consequences of earlier assumptions, data dependencies, or policy choices.
+
 
 
 
