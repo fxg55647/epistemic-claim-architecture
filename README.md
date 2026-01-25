@@ -1,3 +1,17 @@
+# Truth as a Traceable Process: 
+# An Epistemic Claim Architecture for Agents, Evidence, and Pluralistic Evaluation
+
+Abstract
+
+The dominant paradigm in AI and blockchain systems treats truth as a singular canonical state to be computed, agreed upon, or finalized. This paradigm is effective in domains with formal semantics and unambiguous outcomes, such as financial transfers. However, when applied to natural language, contested evidence, and AI-assisted decision-making, forced convergence obscures uncertainty, erases disagreement, and shifts epistemic risk to users and institutions.
+This paper introduces an Epistemic Claim Architecture that treats truth not as a canonical state, but as a traceable process. Instead of collapsing assertions into a single outcome, the architecture preserves claims, evidence, interpretations, evaluations, and decisions as inspectable artifacts over time. It is built around three core components: a Claim Ledger that records claims as first-class objects without asserting correctness; a Neutral Witness that produces structured, attributable evaluations under explicit scope and assumptions; and a Flight Recorder that captures the procedural trace connecting reasoning to action.
+
+A key contribution is the use of triple stateless evaluation, which separates interpretation, support-seeking, and counter-evidence analysis into independent steps. By removing the structural pressure to maintain narrative coherence or reach forced closure, this pattern reduces unexamined error and hallucination-inducing dynamics in AI-assisted systems.
+
+The architecture supports pluralistic evaluation without forced consensus, enabling accountability without agreement. Decisions may be made under uncertainty while preserving the reasoning that justified them. We discuss applications in autonomous agent contracts, confidential due diligence, and scientific communication, and propose evaluation criteria focused on traceability, calibration, and dispute cost rather than correctness alone.
+
+By reframing truth as a documented process rather than a crowned outcome, this work enables new classes of applications in which uncertainty, disagreement, and evolving interpretation must be handled explicitly rather than suppressed.
+
 1. Introduction
 
 Digital systems inherit more from human psychology and institutional history than is often acknowledged. Long before databases, blockchains, or artificial intelligence, humans developed a strong preference for clear outcomes, authoritative answers, and resolved states. Decisions feel safer when ambiguity is closed, responsibility is delegated, and uncertainty is hidden behind a final verdict. This preference has shaped not only institutions, but also the technical architectures that now mediate economic, legal, and informational processes.
