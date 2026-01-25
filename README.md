@@ -617,6 +617,106 @@ The Flight Recorder may operate at different granularities. High-risk workflows 
 
 By preserving the sequence of actions that produced a claim or decision, the Flight Recorder enables a shift from outcome-based blame to process-based analysis. Failures can be examined not as isolated errors, but as traceable consequences of earlier assumptions, data dependencies, or policy choices.
 
+7.2 Event Taxonomy
+
+(observe → infer → act → claim → verify → escalate)
+
+To make process traces interpretable and comparable across systems, the Flight Recorder organizes events into a small, standardized taxonomy. This taxonomy does not prescribe how agents must reason; it provides a common vocabulary for describing what kind of step occurred within a reasoning or decision process.
+
+At a high level, events fall into six categories:
+
+observe: acquisition of external input, such as data ingestion, document retrieval, sensor readings, or user-provided information.
+
+infer: internal reasoning steps that generate intermediate assumptions, hypotheses, or derived propositions based on observed inputs.
+
+act: execution of an external action, including tool invocations, API calls, transactions, or communications.
+
+claim: issuance or modification of an explicit claim recorded in the Claim Ledger.
+
+verify: evaluation steps, including witness assessments, consistency checks, or validation procedures.
+
+escalate: transitions that defer decision-making, invoke higher scrutiny, or trigger human or policy-based intervention.
+
+Each event type captures a distinct epistemic role. Observations introduce information. Inferences transform it. Actions apply it. Claims formalize it. Verification evaluates it. Escalation governs risk when uncertainty or disagreement exceeds acceptable bounds.
+
+This taxonomy is intentionally minimal. It avoids encoding domain-specific logic while remaining expressive enough to reconstruct complex workflows. Additional metadata may be attached to events, but the core type remains stable across deployments.
+
+Event typing enables selective analysis. Auditors may focus on inference chains leading to a disputed claim. Developers may inspect tool calls associated with anomalous outcomes. Regulators may examine escalation patterns in high-risk decisions. Without such structure, process logs devolve into opaque sequences of timestamps.
+
+Importantly, the taxonomy does not imply linear progression. Events may repeat, branch, or loop. An inference may lead back to observation. Verification may generate new claims. Escalation may reset scope or terminate a process entirely. The recorder captures structure without enforcing flow.
+
+By standardizing how reasoning steps are categorized, the Flight Recorder makes it possible to compare processes across agents, models, and institutions. Failures cease to be anecdotal and become analyzable patterns.
+
+The next section examines how these traces support responsibility attribution and root-cause analysis without collapsing complex failures into simplistic blame.
+
+7.3 Blame Assignment and Root-Cause Analysis
+
+Complex failures rarely have a single cause. They emerge from interactions between data quality, assumptions, tools, policies, and agents over time. Traditional systems obscure these interactions by presenting outcomes without durable traces of how they were produced. As a result, responsibility is often misattributed or reduced to superficial blame.
+
+The Flight Recorder enables a different approach. By preserving a structured, time-ordered record of observations, inferences, actions, and evaluations, it allows failures to be analyzed as process breakdowns rather than isolated errors.
+
+Blame assignment in this context does not imply moral judgment. Instead, it refers to the identification of where within a process a failure originated and which class of cause it belongs to. Common categories include:
+
+Data failure: incorrect, incomplete, outdated, or poisoned inputs.
+
+Interpretation failure: ambiguous or underspecified claims leading to mis-scoped reasoning.
+
+Tool failure: malfunctioning APIs, incorrect configurations, or model limitations.
+
+Evaluation failure: biased, inconsistent, or insufficient witness assessments.
+
+Policy failure: thresholds or escalation rules that permitted action under inappropriate uncertainty.
+
+Design failure: structural incentives or constraints that made error likely.
+
+Because each step in the process is recorded with attribution and context, these categories can be distinguished rather than conflated. A faulty outcome may be traced to a weak evidentiary link rather than to an agent’s reasoning, or to a policy decision rather than to a model’s output.
+
+Root-cause analysis becomes cumulative rather than speculative. Similar failure patterns across multiple traces can be identified and compared. This supports targeted remediation: refining claim schemas, tightening admissibility rules, adjusting policies, or replacing unreliable tools.
+
+Importantly, the architecture preserves the epistemic record even when failures occur. Incorrect claims, flawed evaluations, and inappropriate actions remain visible as part of the system’s history. This visibility enables learning without requiring that systems be risk-free or that agents be perfectly reliable.
+
+By separating process diagnosis from outcome judgment, the Flight Recorder supports accountability without scapegoating. Responsibility becomes actionable rather than punitive, enabling systems to improve over time rather than merely assign fault after the fact.
+
+The next section addresses how the integrity of these traces is preserved and how tampering or retroactive modification can be detected.
+
+7.4 Tamper Evidence
+
+(hash chains / merkle logs)
+
+The integrity of process traces is critical for accountability. If logs can be silently altered after the fact, their evidentiary value collapses. The Flight Recorder addresses this risk through tamper-evident, rather than tamper-proof, mechanisms.
+
+Each event recorded by the Flight Recorder may be cryptographically linked to prior events using hash chaining or Merkle tree structures. This creates a verifiable dependency between entries: altering or removing an event changes downstream hashes and can be detected during verification. These mechanisms do not prevent modification outright, but they make retroactive manipulation observable.
+
+Tamper evidence is intentionally decoupled from consensus. The Flight Recorder does not require distributed agreement on log state to be useful. Logs may be maintained locally, replicated selectively, or anchored periodically to external timestamping systems. What matters is that a given trace can be shown to be internally consistent and unchanged since a known point in time.
+
+Different deployments may adopt different integrity strategies. Lightweight environments may use simple hash chains with occasional checkpoints. Higher-assurance contexts may employ Merkle logs with independent verifiers or external anchors. These choices affect the strength of integrity guarantees but not the epistemic role of the recorder.
+
+Importantly, integrity mechanisms apply to structure, not semantics. A tamper-evident log can still record flawed reasoning, incorrect data, or poor decisions. The goal is not to certify correctness, but to preserve the ability to examine what actually happened.
+
+By making modification detectable rather than impossible, the Flight Recorder aligns with the broader philosophy of the architecture: failures and manipulations are expected, but they should leave traces. Trust is supported through auditability, not through the assumption of perfect control.
+
+The following section examines how traces can be selectively redacted or segmented to balance transparency with confidentiality.
+
+7.5 Redaction and Access Tiers
+
+Process traces often contain sensitive information: proprietary data, personal details, confidential sources, or regulated material. The Flight Recorder addresses this by supporting selective redaction and tiered access, rather than assuming that all traces must be universally visible.
+
+Redaction is treated as a structured operation rather than deletion. Events or fields within events may be masked, encrypted, or summarized, while preserving their position, type, and linkage within the overall trace. This ensures that the existence and sequence of actions remain visible even when content is restricted.
+
+Access tiers define who may see which parts of a trace. Different audiences may be granted different views over the same underlying record. For example, public observers may see high-level event summaries, authorized reviewers may inspect methodological details, and accredited auditors may access full traces under controlled conditions. These tiers are explicit and policy-governed.
+
+Crucially, redaction does not erase accountability. When content is hidden, the recorder retains metadata indicating what was redacted, under which policy, and by whom. This prevents silent removal of inconvenient details and preserves the ability to challenge redaction decisions themselves.
+
+The architecture supports deferred disclosure. Sensitive information may remain sealed until a triggering condition occurs, such as a dispute, regulatory request, or incident review. In such cases, previously hidden trace segments can be revealed to authorized parties without reconstructing history retroactively.
+
+Redaction and access control are applied consistently across human and automated processes. AI-generated traces are not exempt from scrutiny, nor are human annotations immune to restriction. This symmetry ensures that confidentiality does not become a loophole for unaccountable action.
+
+By enabling audit without exposure, the Flight Recorder reconciles two competing requirements: the need to preserve process integrity and the need to respect confidentiality. Transparency becomes a controlled capability rather than an all-or-nothing property.
+
+With this, the Flight Recorder component is fully specified. The architecture now turns from infrastructure to application, examining how these components enable concrete use cases across domains.
+
+
+
 
 
 
