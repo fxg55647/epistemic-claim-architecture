@@ -1,13 +1,13 @@
-####Primary contributions
+#### Primary contributions
 
 This paper introduces three independent but composable contributions:
 
-#####Epistemic Claim Architecture (ECA): 
+##### Epistemic Claim Architecture (ECA): 
 a process-oriented framework for representing and evaluating claims without collapsing uncertainty, disagreement, or contextual information into a single irreversible outcome.
 
-#####Triple-pass stateless evaluation:
+##### Triple-pass stateless evaluation:
 a structured evaluation procedure that separates interpretation, support, and conflict analysis.
-#####Zero-Knowledge Claim Evaluation (ZKCE):
+##### Zero-Knowledge Claim Evaluation (ZKCE):
 a method for verifiable claim evaluation without revealing the claim, evidence, or evaluation criteria.
 
 # From Digital Monarchy to Republic  
