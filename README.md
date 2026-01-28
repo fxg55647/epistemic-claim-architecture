@@ -49,45 +49,45 @@ In such a republic, no one owns the truth. What we hold in common is a shared pr
 This architecture addresses a general problem: 
 how to work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. 
 It applies wherever: 
-- • claims cannot be conclusively verified at the time they are made, 
-- • evidence is incomplete, ambiguous, or value-laden, 
-- • and decisions must still be taken responsibly. 
+-claims cannot be conclusively verified at the time they are made, 
+-evidence is incomplete, ambiguous, or value-laden, 
+-and decisions must still be taken responsibly. 
 
 Neutral Witness is not AI-specific and not blockchain-dependent. 
 AI systems and blockchains are implementation tools, not defining features. 
 #### 1. Core abstraction: claims, not states 
 The system is claim-centric rather than state-centric. 
 A claim is: 
-- • an explicit assertion (“X supports Y”, “Event A occurred”, “Condition C holds”), 
-- • scoped in time, context, and definition, 
-- • allowed to coexist with competing or contradictory claims. 
+-an explicit assertion (“X supports Y”, “Event A occurred”, “Condition C holds”), 
+-scoped in time, context, and definition, 
+-allowed to coexist with competing or contradictory claims. 
 
 Claims are never collapsed into a single authoritative state.
 #### 2. Neutral Witness (NW) 
 Neutral Witness is an institutional role, not a technology. 
 Its function is to: 
-- • receive claims, 
-- • evaluate them through multiple independent assessment processes, • surface agreement, disagreement, and uncertainty, 
-- • and record the evaluation trace for later inspection. 
+-receive claims, 
+-evaluate them through multiple independent assessment processes,surface agreement, disagreement, and uncertainty, 
+-and record the evaluation trace for later inspection. 
 
 Evaluators may be: 
-- • humans, 
-- • AI systems, 
-- • rule-based programs, 
-- • cryptographic or sensor-based attestations, 
-- • or any combination of the above. 
+-humans, 
+-AI systems, 
+-rule-based programs, 
+-cryptographic or sensor-based attestations, 
+-or any combination of the above. 
 
 What matters is independence and comparability, not intelligence. NW does not decide what is true. 
 It structures disagreement and makes it inspectable. 
 
 #### 3. Stateless plural evaluation (general principle) 
 To prevent narrative lock-in, evaluations are designed to be stateless and independent. Each evaluation: 
-- • starts from the same claim and evidence set, 
-- • has no memory of prior evaluations, 
-- • and produces a bounded assessment under explicit assumptions. This principle applies equally to: 
-- • human reviewers (no shared deliberation),
-- • automated systems, 
-- • or institutional audits. 
+-starts from the same claim and evidence set, 
+-has no memory of prior evaluations, 
+-and produces a bounded assessment under explicit assumptions. This principle applies equally to: 
+-human reviewers (no shared deliberation),
+-automated systems, 
+-or institutional audits. 
 
 Statelessness prevents internally consistent but externally incorrect stories from forming. 
 #### 4. Triple-pass stateless evaluation (reference pattern) 
@@ -104,106 +104,107 @@ Disagreement is treated as signal, not failure.
 
 #### 5. Claim Register
 All claims and evaluations are stored as traceable records, not verdicts. A claim register allows mutually contradictory claims while binding them into an explicit structure. It may include: 
-- • the original claim, 
-- • referenced evidence, 
-- • each independent evaluation output, 
-- • surfaced contradictions,
-- • stated assumptions and uncertainty bounds, 
-- • and links to related claims. 
+-the original claim, 
+-referenced evidence, 
+-each independent evaluation output, 
+-surfaced contradictions,
+-stated assumptions and uncertainty bounds, 
+-and links to related claims. 
 
 
 This record functions as: 
-- • institutional memory, 
-- • audit trail, 
-- • and basis for later comparison or dispute resolution. 
+-institutional memory, 
+-audit trail, 
+-and basis for later comparison or dispute resolution. 
 
 Storage backends may include: 
-- • append-only logs, 
-- • document stores, 
-- • or immutable ledgers (e.g. blockchains). 
+-append-only logs, 
+-document stores, 
+-or immutable ledgers (e.g. blockchains). 
 
 Immutability preserves process, not truth. 
 #### 6. What the system explicitly does NOT do 
-- • Does not guarantee correctness 
-- • Does not eliminate uncertainty 
-- • Does not enforce consensus 
-- • Does not replace human judgment 
-- • Does not act as a truth oracle 
+-Does not guarantee correctness 
+-Does not eliminate uncertainty 
+-Does not enforce consensus 
+-Does not replace human judgment 
+-Does not act as a truth oracle 
 
 Its value lies in making error, disagreement, and assumption visible. 
 #### 7. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
 This architecture can be instantiated as follows. 
 Input (human-initiated) 
-- • Claim: “The source at URL X supports the statement Y.” 
-- • Evidence: URL X
-- • Optional confidential material: additional documents or data not suitable for  public disclosure. 
+-Claim: “The source at URL X supports the statement Y.” 
+-Evidence: URL X
+-Optional confidential material: additional documents or data not suitable for  public disclosure. 
 
 The human submitter defines the scope and constraints of evaluation, including what may  be quoted publicly and what must remain confidential. Before evaluation begins, the  Neutral Witness explicitly restates how it has understood the claim, its scope, and  evaluation criteria, making any misinterpretation visible and correctable. 
 Evaluation (AI in Neutral Witness role) 
 Neutral Witness orchestrates multiple stateless evaluation passes, each executed  independently. 
-- • Pass A (support-focused): 
+-Pass A (support-focused): 
 Identifies evidence in the source that supports the claim, under explicit  assumptions. 
-- • Pass B (refutation / gap-focused): 
+-Pass B (refutation / gap-focused): 
 Identifies contradictions, missing support, or scope mismatches. 
-- • Pass C (ambiguity audit): 
+-Pass C (ambiguity audit): 
 
 Examines alternative interpretations, unclear definitions, and boundary conditions. Each pass is: 
-- • memoryless, 
-- • bounded in scope, 
-- • unaware of the others’conclusions. 
+-memoryless, 
+-bounded in scope, 
+-unaware of the others’conclusions. 
 
 Confidential evaluation (optional, via TEE / ZKCE) 
 If part of the relevant evidence cannot be disclosed:
--  • One or more evaluation passes are executed under Zero-Knowledge Claim Evaluation (ZKCE), potentially within a Trusted Execution Environment (TEE).
--  • The confidential data remains protected and is never written to the public record.
--  • The evaluation code, inputs, and environment are cryptographically attested.
+- One or more evaluation passes are executed under Zero-Knowledge Claim Evaluation (ZKCE), potentially within a Trusted Execution Environment (TEE).
+- The confidential data remains protected and is never written to the public record.
+- The evaluation code, inputs, and environment are cryptographically attested.
 
 Confidential evaluation produces:
--  • a bounded assessment,
--  • explicit assumptions and uncertainty notes,
--  • and attestation metadata.
+- a bounded assessment,
+- explicit assumptions and uncertainty notes,
+- and attestation metadata.
 
 These outputs are treated as one evaluator among others, not as an authority.
 
 Comparison 
 Neutral Witness compares all evaluation outputs: 
-- • public AI evaluations, 
-- • confidential claim evaluations (ZKCE, including TEE-backed runs, if present),
-- • and optionally human-provided assessments. 
+-public AI evaluations, 
+-confidential claim evaluations (ZKCE, including TEE-backed runs, if present),
+-and optionally human-provided assessments. 
 
 It explicitly surfaces: 
-- • convergence, 
-- • bounded disagreement, 
-- • hard contradiction, 
-- • or insufficient evidence. 
+-convergence, 
+-bounded disagreement, 
+-hard contradiction, 
+-or insufficient evidence. 
 
 No single conclusion is forced. 
 Disagreement is returned as structured output. 
 Recording (AI Flight Recorder)
 A permanent claim register is generated: 
-- • HTML report for human readers: 
+-HTML report for human readers: 
 	- summarizes each evaluation,
-	- highlights disagreements and assumptions, 
+	- highlights
+ disagreements and assumptions, 
 	- explains where confidentiality limits disclosure. 
 
-- • JSON record for machines: 
+-JSON record for machines: 
 	- includes structured evaluation outputs, 
 	- links related claims, 
 	- records hashes and attestation metadata. 
 
 These artifacts are written to Arweave as content-addressed, immutable records. The record captures how the claim was evaluated, not what is true. 
 Outcome 
-- • The researcher retains interpretive responsibility. 
-- • The evaluation becomes citable, inspectable, and reusable. 
-- • Future claims can reference, extend, or contest this register. 
-- • Confidential evidence contributes to evaluation without becoming public or  authoritative. 
+-The researcher retains interpretive responsibility. 
+-The evaluation becomes citable, inspectable, and reusable. 
+-Future claims can reference, extend, or contest this register. 
+-Confidential evidence contributes to evaluation without becoming public or  authoritative. 
 
 Why this matters 
 This example shows that: 
-- • humans can initiate Neutral Witness evaluations, 
-- • AI can act as one evaluator among others, 
-- • confidential data can participate without disclosure, 
-- • and immutable storage preserves accountability without enforcing consensus. 
+-humans can initiate Neutral Witness evaluations, 
+-AI can act as one evaluator among others, 
+-confidential data can participate without disclosure, 
+-and immutable storage preserves accountability without enforcing consensus. 
 
 #### 8. Representative Use Cases (non-exhaustive) 
 The Neutral Witness architecture is applicable wherever claims must be evaluated under  uncertainty without collapsing disagreement into forced consensus. The following  examples illustrate typical patterns.
@@ -213,26 +214,26 @@ Because the evaluation captures quoted passages, contextual assumptions, and the
 ##### 8.2 Confidential due diligence and compliance 
 Organizations often need to assess claims that depend on sensitive or proprietary  information. 
 Using a combination of public evaluation and confidential evaluation (e.g. via TEEs),  Neutral Witness allows: 
-- • claims to be evaluated without full disclosure, 
-- • disagreements to be surfaced explicitly, 
-- • and accountability to be preserved without leaking data. 
+-claims to be evaluated without full disclosure, 
+-disagreements to be surfaced explicitly, 
+-and accountability to be preserved without leaking data. 
 
 By enabling repeated and comparable evaluations over time, this supports continuous,  auditable due diligence and dynamically updated, evidence-based trust assessments  rather than one-off certifications. 
 By reducing reliance on upfront disclosure and privileged access, it also allows smaller  actors and organizations in weak-institution contexts to compete on more equal terms,  based on the traceability of their claims rather than inherited reputation.
 ##### 8.3 Autonomous agents and machine-to-machine interaction 
 Autonomous agents can exchange claims about capabilities, commitments, or state  without requiring blind trust. 
 Neutral Witness allows agents to: 
-- • present claims with explicit assumptions and uncertainty, 
-- • compare independent evaluations, 
-- • form granular, conditional agreements whose terms explicitly encode uncertainty,  assumptions, and acceptable risk, 
-- • And leave auditable traces of negotiation and decision making. 
+-present claims with explicit assumptions and uncertainty, 
+-compare independent evaluations, 
+-form granular, conditional agreements whose terms explicitly encode uncertainty,  assumptions, and acceptable risk, 
+-And leave auditable traces of negotiation and decision making. 
 
 This makes agent interaction economically usable without pretending agents are correct or  aligned. 
 #### 9. Why this matters 
 By separating: 
-- • claims from states, 
-- • evaluation from authority, 
-- • and memory from judgment, 
+-claims from states, 
+-evaluation from authority, 
+-and memory from judgment, 
 
 the system becomes compatible with how knowledge actually behaves in the real world. AI accelerates evaluation. 
 Blockchains preserve memory. 
