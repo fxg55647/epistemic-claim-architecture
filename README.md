@@ -1,63 +1,5 @@
-#### Primary contributions
-
-This paper introduces three independent but composable contributions:
-
-##### Epistemic Claim Architecture (ECA): 
-a process-oriented framework for representing and evaluating claims without collapsing uncertainty, disagreement, or contextual information into a single irreversible outcome.
-
-##### Triple-pass stateless evaluation:
-a structured evaluation procedure that separates interpretation, support, and conflict analysis.
-##### Zero-Knowledge Claim Evaluation (ZKCE):
-a method for verifiable claim evaluation without revealing the claim, evidence, or evaluation criteria.
-
-# From Digital Monarchy to Republic  
-## An Epistemic Claim Architecture Manifesto 
-Modern AI systems and blockchains are often presented with the same promise: that truth can be produced without human authority. 
-
-AI promises correct answers derived from data. 
-
-Blockchains promise objective truth through consensus and immutability. 
-
-Behind both lies a seductive idea: that truth is a stable, singular outcome which can be  mechanically determined and delivered. 
-
-This idea is not just optimistic. It is wrong. 
-
-Most meaningful claims are not simply true or false. They are interpretations of incomplete  evidence, expressed in ambiguous language, shaped by context, incentives, and values.  Even humans cannot reliably produce a single final answer in such situations. Systems  that claim to do so do not eliminate uncertainty. They hide it. 
-
-And hidden uncertainty changes how power works. 
-
-When systems present certainty, people stop evaluating. Judgment is quietly outsourced.  Disagreement is reframed as a shameful error. What should remain open to interpretation  becomes an authoritative output. Responsibility dissolves into phrases like “the system  decided. 
-
-This is how a new form of central authority emerges. 
-
-Despite decentralized infrastructure, many of these systems function socially as digital  monarchies. They issue verdicts without exposing reasoning. They allow no appeal, no  comparison, no structured disagreement. Users are not participants in judgment, but  subjects of decisions whose foundations they cannot examine. 
-
-Human societies learned long ago that this does not work. 
-
-We did not overcome uncertainty by eliminating judgment. We institutionalized it. 
-
-Courts rely on trials, not oracles. Evidence, witnesses, impartial experts, reasoning, and  procedure exist not to guarantee truth, but to make decisions accountable under  uncertainty. The goal has never been perfect correctness, but visible responsibility.
-The same principle must apply to computational systems. 
-
-Instead of systems that declare truth, we need systems that expose how claims are  formed, where they are weak, and why reasonable disagreement exists. Systems that treat  error not as an embarrassment to be hidden, but as a natural property of knowledge to be  managed. 
-
-This requires abandoning a comforting illusion. 
-
-Machines cannot think for us. They cannot carry responsibility on our behalf. This is both  disappointing and deeply reassuring. It ends the fantasy of automated certainty, and  restores judgment to where it belongs: with humans and the institutions they build. 
-Giving up the pursuit of final, machine-generated truth does not make systems weaker.  Paradoxically, systems become more trustworthy precisely when they abandon the  ambition of delivering absolute truth. It makes them usable. When uncertainty is explicit, it  can be evaluated, priced, shared, and acted upon. When reasoning is recorded,  accountability becomes possible. When multiple claims can coexist, disagreement  becomes informative instead of destructive. 
-
-The real choice before us is not technical. It is political. 
-
-We can build systems that rule by producing unquestionable outcomes. Or we can build systems that testify, leaving traces that others may inspect, contest, and  reinterpret. 
-This is the difference between a digital monarchy and a digital republic. 
-
-A republic does not require perfect citizens. It requires institutions that assume fallibility,  make power visible, and prevent responsibility from disappearing behind machinery. 
-
-In such a republic, no one owns the truth. What we hold in common is a shared process for  seeking it.
-
-## Quick Tech Specs 
-### An Epistemic Claim Architecture 
-#### 0. Scope and intent 
+## An Epistemic Claim Architecture - Quick Tech Specs   
+#### 0. Scope, intent and contributions
 This architecture addresses a general problem: 
 how to work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. 
 It applies wherever: 
@@ -66,7 +8,18 @@ It applies wherever:
 - and decisions must still be taken responsibly. 
 
 Neutral Witness is not AI-specific and not blockchain-dependent. 
-AI systems and blockchains are implementation tools, not defining features. 
+AI systems and blockchains are implementation tools, not defining features.
+
+This paper introduces three independent but composable contributions:
+
+###### Epistemic Claim Architecture (ECA): 
+a process-oriented framework for representing and evaluating claims without collapsing uncertainty, disagreement, or contextual information into a single irreversible outcome.
+
+###### Triple-pass stateless evaluation:
+a structured evaluation procedure that separates interpretation, support, and conflict analysis.
+###### Zero-Knowledge Claim Evaluation (ZKCE):
+a method for verifiable claim evaluation without revealing the claim, evidence, or evaluation criteria.
+
 #### 1. Core abstraction: claims, not states 
 The system is claim-centric rather than state-centric. 
 A claim is: 
@@ -251,6 +204,51 @@ Blockchains preserve memory.
 Neutral Witness preserves responsibility. 
 One-sentence summary  
 Neutral Witness is a general mechanism for evaluating and recording contested claims  under uncertainty; AI and blockchains are merely tools for implementing this role at scale.
+
+# From Digital Monarchy to Republic  
+## An Epistemic Claim Architecture Manifesto 
+Modern AI systems and blockchains are often presented with the same promise: that truth can be produced without human authority. 
+
+AI promises correct answers derived from data. 
+
+Blockchains promise objective truth through consensus and immutability. 
+
+Behind both lies a seductive idea: that truth is a stable, singular outcome which can be  mechanically determined and delivered. 
+
+This idea is not just optimistic. It is wrong. 
+
+Most meaningful claims are not simply true or false. They are interpretations of incomplete  evidence, expressed in ambiguous language, shaped by context, incentives, and values.  Even humans cannot reliably produce a single final answer in such situations. Systems  that claim to do so do not eliminate uncertainty. They hide it. 
+
+And hidden uncertainty changes how power works. 
+
+When systems present certainty, people stop evaluating. Judgment is quietly outsourced.  Disagreement is reframed as a shameful error. What should remain open to interpretation  becomes an authoritative output. Responsibility dissolves into phrases like “the system  decided. 
+
+This is how a new form of central authority emerges. 
+
+Despite decentralized infrastructure, many of these systems function socially as digital  monarchies. They issue verdicts without exposing reasoning. They allow no appeal, no  comparison, no structured disagreement. Users are not participants in judgment, but  subjects of decisions whose foundations they cannot examine. 
+
+Human societies learned long ago that this does not work. 
+
+We did not overcome uncertainty by eliminating judgment. We institutionalized it. 
+
+Courts rely on trials, not oracles. Evidence, witnesses, impartial experts, reasoning, and  procedure exist not to guarantee truth, but to make decisions accountable under  uncertainty. The goal has never been perfect correctness, but visible responsibility.
+The same principle must apply to computational systems. 
+
+Instead of systems that declare truth, we need systems that expose how claims are  formed, where they are weak, and why reasonable disagreement exists. Systems that treat  error not as an embarrassment to be hidden, but as a natural property of knowledge to be  managed. 
+
+This requires abandoning a comforting illusion. 
+
+Machines cannot think for us. They cannot carry responsibility on our behalf. This is both  disappointing and deeply reassuring. It ends the fantasy of automated certainty, and  restores judgment to where it belongs: with humans and the institutions they build. 
+Giving up the pursuit of final, machine-generated truth does not make systems weaker.  Paradoxically, systems become more trustworthy precisely when they abandon the  ambition of delivering absolute truth. It makes them usable. When uncertainty is explicit, it  can be evaluated, priced, shared, and acted upon. When reasoning is recorded,  accountability becomes possible. When multiple claims can coexist, disagreement  becomes informative instead of destructive. 
+
+The real choice before us is not technical. It is political. 
+
+We can build systems that rule by producing unquestionable outcomes. Or we can build systems that testify, leaving traces that others may inspect, contest, and  reinterpret. 
+This is the difference between a digital monarchy and a digital republic. 
+
+A republic does not require perfect citizens. It requires institutions that assume fallibility,  make power visible, and prevent responsibility from disappearing behind machinery. 
+
+In such a republic, no one owns the truth. What we hold in common is a shared process for  seeking it.
 
 
 
