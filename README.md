@@ -1,6 +1,6 @@
-## An Epistemic Claim Architecture
-### Quick Tech Specs   
-#### 0. Scope, intent and contributions
+# An Epistemic Claim Architecture
+## Quick Tech Specs   
+### 0. Scope, intent and contributions
 
 **Problem:** how to work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. It applies wherever: claims cannot be conclusively verified at the time they are made, evidence is incomplete, ambiguous, or value-laden, and decisions must still be taken responsibly. Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence. This is analogous to performing multi-step calculations with prematurely rounded numbers.
 
@@ -13,18 +13,18 @@ AI systems and blockchains are implementation tools, not defining features.
 
 This paper introduces three independent but composable contributions:
 
-###### Epistemic Claim Architecture (ECA): 
+##### Epistemic Claim Architecture (ECA): 
 a process-oriented framework for representing and evaluating claims without collapsing uncertainty, disagreement, or contextual information into a single irreversible outcome.
-###### Triple-pass stateless evaluation:
+##### Triple-pass stateless evaluation:
 a structured evaluation procedure that separates interpretation, support, and conflict analysis.
-###### Zero-Knowledge Claim Evaluation (ZKCE):
+##### Zero-Knowledge Claim Evaluation (ZKCE):
 a method for verifiable claim evaluation without revealing the claim, evidence, or evaluation criteria.
-#### Temporal Claim Branching (TCB):
+### Temporal Claim Branching (TCB):
 a method for maintaining multiple alternative futures as explicit, 
 parallel claim structures that can coexist until evidence resolves them, 
 enabling adaptive decision-making and systematic counterfactual analysis.
 
-#### 1. Core abstraction: claims, not states 
+### 1. Core abstraction: claims, not states 
 The system is claim-centric rather than state-centric. 
 A claim is: 
 - an explicit assertion (“X supports Y”, “Event A occurred”, “Condition C holds”), 
@@ -32,7 +32,7 @@ A claim is:
 - allowed to coexist with competing or contradictory claims. 
 
 Claims are never collapsed into a single authoritative state.
-#### 2. Neutral Witness (NW) 
+### 2. Neutral Witness (NW) 
 Neutral Witness is an institutional role, not a technology. 
 Its function is to: 
 - receive claims, 
@@ -49,7 +49,7 @@ Evaluators may be:
 What matters is independence and comparability, not intelligence. NW does not decide what is true. 
 It structures disagreement and makes it inspectable. 
 
-#### 3. Stateless plural evaluation (general principle) 
+### 3. Stateless plural evaluation (general principle) 
 To prevent narrative lock-in, evaluations are designed to be stateless and independent. Each evaluation: 
 - starts from the same claim and evidence set, 
 - has no memory of prior evaluations, 
@@ -59,7 +59,7 @@ To prevent narrative lock-in, evaluations are designed to be stateless and indep
 	- 	or institutional audits. 
 
 Statelessness prevents internally consistent but externally incorrect stories from forming. 
-#### 4. Triple-pass stateless evaluation (reference pattern) 
+### 4. Triple-pass stateless evaluation (reference pattern) 
 A common evaluation pattern uses three independent passes: 
 1. Support analysis 
 What supports the claim, and under which assumptions? 
@@ -71,7 +71,7 @@ What definitions, time bounds, or missing evidence matter?
 The purpose is not balance, but exposure of epistemic structure. 
 Disagreement is treated as signal, not failure. 
 
-#### 5. Claim Register
+### 5. Claim Register
 All claims and evaluations are stored as traceable records, not verdicts. A claim register allows mutually contradictory claims while binding them into an explicit structure. It may include: 
 - the original claim, 
 - referenced evidence, 
@@ -93,11 +93,11 @@ Storage backends may include:
 
 Immutability preserves process, not truth. 
 
-#### 6. Temporal Claim Branching (TCB)
+### 6. Temporal Claim Branching (TCB)
 
 Temporal Claim Branching (TCB) preserves multiple conditional future claim paths for claims whose consequences unfold over time. Unlike forecasting or scenario planning, branches are not merged into a single outcome before evidence resolves them. This enables conditional decision-making without narrative lock-in.
 
-#### 7. What the system explicitly does NOT do 
+### 7. What the system explicitly does NOT do 
 - Does not guarantee correctness 
 - Does not eliminate uncertainty 
 - Does not enforce consensus 
@@ -105,7 +105,7 @@ Temporal Claim Branching (TCB) preserves multiple conditional future claim paths
 - Does not act as a truth oracle 
 
 Its value lies in making error, disagreement, and assumption visible. 
-#### 8. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
+### 8. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
 This architecture can be instantiated as follows. 
 Input (human-initiated) 
 - Claim: “The source at URL X supports the statement Y.” 
@@ -179,12 +179,12 @@ This example shows that:
 - confidential data can participate without disclosure, 
 - and immutable storage preserves accountability without enforcing consensus. 
 
-#### 9. Representative Use Cases (non-exhaustive) 
+### 9. Representative Use Cases (non-exhaustive) 
 The Neutral Witness architecture is applicable wherever claims must be evaluated under  uncertainty without collapsing disagreement into forced consensus. The following  examples illustrate typical patterns.
-##### 9.1 Research and source criticism  
+#### 9.1 Research and source criticism  
 A researcher submits a claim together with a cited source for evaluation. Neutral Witness assesses how the source supports the claim, surfaces ambiguities and  counterevidence, and records the evaluation trace as a citable artifact. 
 Because the evaluation captures quoted passages, contextual assumptions, and the  relationship between claim and source at a specific point in time, it also provides a partial  mitigation against link rot and inaccessible sources. Even if the original material later  changes or disappears, the reasoning trace and referenced excerpts remain inspectable. 
-##### 9.2 Confidential due diligence and compliance 
+#### 9.2 Confidential due diligence and compliance 
 Organizations often need to assess claims that depend on sensitive or proprietary  information. 
 Using a combination of public evaluation and confidential evaluation (e.g. via TEEs),  Neutral Witness allows: 
 - claims to be evaluated without full disclosure, 
@@ -193,7 +193,7 @@ Using a combination of public evaluation and confidential evaluation (e.g. via T
 
 By enabling repeated and comparable evaluations over time, this supports continuous,  auditable due diligence and dynamically updated, evidence-based trust assessments  rather than one-off certifications. 
 By reducing reliance on upfront disclosure and privileged access, it also allows smaller  actors and organizations in weak-institution contexts to compete on more equal terms,  based on the traceability of their claims rather than inherited reputation.
-##### 9.3 Autonomous agents and machine-to-machine interaction 
+#### 9.3 Autonomous agents and machine-to-machine interaction 
 Autonomous agents can exchange claims about capabilities, commitments, or state  without requiring blind trust. 
 Neutral Witness allows agents to: 
 - present claims with explicit assumptions and uncertainty, 
@@ -202,7 +202,7 @@ Neutral Witness allows agents to:
 - And leave auditable traces of negotiation and decision making. 
 
 This makes agent interaction economically usable without pretending agents are correct or  aligned. 
-#### 10. Why this matters 
+### 10. Why this matters 
 By separating: 
 - claims from states, 
 - evaluation from authority, 
@@ -212,7 +212,7 @@ the system becomes compatible with how knowledge actually behaves in the real wo
 Blockchains preserve memory. 
 Neutral Witness preserves responsibility. 
 
-#### One-sentence summary  
+### One-sentence summary  
 Neutral Witness is a general mechanism for evaluating and recording contested claims  under uncertainty; AI and blockchains are merely tools for implementing this role at scale.
 
 # From Digital Monarchy to Republic  
