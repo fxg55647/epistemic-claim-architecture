@@ -211,7 +211,8 @@ By separating:
 the system becomes compatible with how knowledge actually behaves in the real world. AI accelerates evaluation. 
 Blockchains preserve memory. 
 Neutral Witness preserves responsibility. 
-One-sentence summary  
+
+#### One-sentence summary  
 Neutral Witness is a general mechanism for evaluating and recording contested claims  under uncertainty; AI and blockchains are merely tools for implementing this role at scale.
 
 # From Digital Monarchy to Republic  
