@@ -1,5 +1,5 @@
 ## An Epistemic Claim Architecture
-Problem: Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence.
+Problem: Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence. This is analogous to performing multi-step calculations with prematurely rounded numbers.
 
 Approach: Preserve uncertainty by carrying structured claim–evidence pairs through the entire reasoning chain, enabling neutral evaluation instead of premature truth assignment.
 
