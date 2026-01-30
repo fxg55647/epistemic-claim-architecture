@@ -92,7 +92,12 @@ Storage backends may include:
 - or immutable ledgers (e.g. blockchains). 
 
 Immutability preserves process, not truth. 
-#### 6. What the system explicitly does NOT do 
+
+#### 6. Temporal Claim Branching (TCB)
+
+Temporal Claim Branching (TCB) preserves multiple conditional future claim paths for claims whose consequences unfold over time. Unlike forecasting or scenario planning, branches are not merged into a single outcome before evidence resolves them. This enables conditional decision-making without narrative lock-in.
+
+#### 7. What the system explicitly does NOT do 
 - Does not guarantee correctness 
 - Does not eliminate uncertainty 
 - Does not enforce consensus 
@@ -100,7 +105,7 @@ Immutability preserves process, not truth.
 - Does not act as a truth oracle 
 
 Its value lies in making error, disagreement, and assumption visible. 
-#### 7. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
+#### 8. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
 This architecture can be instantiated as follows. 
 Input (human-initiated) 
 - Claim: “The source at URL X supports the statement Y.” 
@@ -174,12 +179,12 @@ This example shows that:
 - confidential data can participate without disclosure, 
 - and immutable storage preserves accountability without enforcing consensus. 
 
-#### 8. Representative Use Cases (non-exhaustive) 
+#### 9. Representative Use Cases (non-exhaustive) 
 The Neutral Witness architecture is applicable wherever claims must be evaluated under  uncertainty without collapsing disagreement into forced consensus. The following  examples illustrate typical patterns.
-##### 8.1 Research and source criticism  
+##### 9.1 Research and source criticism  
 A researcher submits a claim together with a cited source for evaluation. Neutral Witness assesses how the source supports the claim, surfaces ambiguities and  counterevidence, and records the evaluation trace as a citable artifact. 
 Because the evaluation captures quoted passages, contextual assumptions, and the  relationship between claim and source at a specific point in time, it also provides a partial  mitigation against link rot and inaccessible sources. Even if the original material later  changes or disappears, the reasoning trace and referenced excerpts remain inspectable. 
-##### 8.2 Confidential due diligence and compliance 
+##### 9.2 Confidential due diligence and compliance 
 Organizations often need to assess claims that depend on sensitive or proprietary  information. 
 Using a combination of public evaluation and confidential evaluation (e.g. via TEEs),  Neutral Witness allows: 
 - claims to be evaluated without full disclosure, 
@@ -188,7 +193,7 @@ Using a combination of public evaluation and confidential evaluation (e.g. via T
 
 By enabling repeated and comparable evaluations over time, this supports continuous,  auditable due diligence and dynamically updated, evidence-based trust assessments  rather than one-off certifications. 
 By reducing reliance on upfront disclosure and privileged access, it also allows smaller  actors and organizations in weak-institution contexts to compete on more equal terms,  based on the traceability of their claims rather than inherited reputation.
-##### 8.3 Autonomous agents and machine-to-machine interaction 
+##### 9.3 Autonomous agents and machine-to-machine interaction 
 Autonomous agents can exchange claims about capabilities, commitments, or state  without requiring blind trust. 
 Neutral Witness allows agents to: 
 - present claims with explicit assumptions and uncertainty, 
@@ -197,7 +202,7 @@ Neutral Witness allows agents to:
 - And leave auditable traces of negotiation and decision making. 
 
 This makes agent interaction economically usable without pretending agents are correct or  aligned. 
-#### 9. Why this matters 
+#### 10. Why this matters 
 By separating: 
 - claims from states, 
 - evaluation from authority, 
