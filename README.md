@@ -1,7 +1,7 @@
 ## An Epistemic Claim Architecture
 Problem: Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence. This is analogous to performing multi-step calculations with prematurely rounded numbers.
 
-Approach: Preserve uncertainty by carrying structured claim–evidence pairs through the entire reasoning chain, enabling neutral evaluation instead of premature truth assignment.
+Approach: Preserve uncertainty by representing reasoning as structured, versioned claim–evidence pairs. Claims, evidence, evaluations, and assumptions are explicitly documented, evaluated from multiple independent perspectives by a neutral witness, and linked into traceable reasoning chains rather than collapsed into a single truth assignment.
 
 Enables: AI agents in accountability-critical tasks and blockchain systems beyond purely mathematical or financial domains.
 
