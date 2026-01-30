@@ -5,7 +5,8 @@ Approach: Preserve uncertainty by carrying structured claim–evidence pairs thr
 
 Enables: AI agents in accountability-critical tasks and blockchain systems beyond purely mathematical or financial domains.
 
-- Quick Tech Specs   
+
+### Quick Tech Specs   
 #### 0. Scope, intent and contributions
 This architecture addresses a general problem: 
 how to work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. 
