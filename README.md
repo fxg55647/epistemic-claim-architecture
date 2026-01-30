@@ -1,4 +1,11 @@
-## An Epistemic Claim Architecture - Quick Tech Specs   
+## An Epistemic Claim Architecture
+Problem: Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence.
+
+Approach: Preserve uncertainty by carrying structured claim–evidence pairs through the entire reasoning chain, enabling neutral evaluation instead of premature truth assignment.
+
+Enables: AI agents in accountability-critical tasks and blockchain systems beyond purely mathematical or financial domains.
+
+- Quick Tech Specs   
 #### 0. Scope, intent and contributions
 This architecture addresses a general problem: 
 how to work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. 
