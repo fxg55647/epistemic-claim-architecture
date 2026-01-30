@@ -15,11 +15,14 @@ This paper introduces three independent but composable contributions:
 
 ###### Epistemic Claim Architecture (ECA): 
 a process-oriented framework for representing and evaluating claims without collapsing uncertainty, disagreement, or contextual information into a single irreversible outcome.
-
 ###### Triple-pass stateless evaluation:
 a structured evaluation procedure that separates interpretation, support, and conflict analysis.
 ###### Zero-Knowledge Claim Evaluation (ZKCE):
 a method for verifiable claim evaluation without revealing the claim, evidence, or evaluation criteria.
+#### Temporal Claim Branching (TCB):
+a method for maintaining multiple alternative futures as explicit, 
+parallel claim structures that can coexist until evidence resolves them, 
+enabling adaptive decision-making and systematic counterfactual analysis.
 
 #### 1. Core abstraction: claims, not states 
 The system is claim-centric rather than state-centric. 
