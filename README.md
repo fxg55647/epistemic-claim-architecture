@@ -19,7 +19,7 @@ a process-oriented framework for representing and evaluating claims without coll
 a structured evaluation procedure that separates interpretation, support, and conflict analysis.
 ##### Zero-Knowledge Claim Evaluation (ZKCE):
 a method for verifiable claim evaluation without revealing the claim, evidence, or evaluation criteria.
-### Temporal Claim Branching (TCB):
+##### Temporal Claim Branching (TCB):
 a method for maintaining multiple alternative futures as explicit, 
 parallel claim structures that can coexist until evidence resolves them, 
 enabling adaptive decision-making and systematic counterfactual analysis.
