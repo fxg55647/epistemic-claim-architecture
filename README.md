@@ -1,17 +1,17 @@
-# An Epistemic Claim Architecture
+# An Epistemic Claim Architecture for Agents, Evidence, and Pluralistic Evaluation
 ## Quick Tech Specs   
 ### 0. Scope, intent and contributions
 
-**Problem:** how to work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. It applies wherever: claims cannot be conclusively verified at the time they are made, evidence is incomplete, ambiguous, or value-laden, and decisions must still be taken responsibly. Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence. This is analogous to performing multi-step calculations with prematurely rounded numbers.
+**Problem:** How to work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. This applies wherever: claims cannot be conclusively verified at the time they are made, evidence is incomplete, ambiguous, or value-laden, and decisions must still be taken responsibly. Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence. This is analogous to performing multi-step calculations with prematurely rounded numbers.
 
 **Approach:** Preserve uncertainty by representing reasoning as structured, versioned claim–evidence pairs. Claims, evidence, evaluations, and assumptions are explicitly documented, evaluated from multiple independent perspectives by a neutral witness, and linked into traceable reasoning chains rather than collapsed into a single truth assignment.
 
 **Enables:** AI agents in accountability-critical tasks and blockchain systems beyond purely mathematical or financial domains.
 
-However ECA architecture or Neutral Witness is not AI-specific and not blockchain-dependent. 
+That being said, ECA architecture or Neutral Witness is not AI-specific and not blockchain-dependent. 
 AI systems and blockchains are implementation tools, not defining features.
 
-This paper introduces three independent but composable contributions:
+This paper introduces four independent but composable contributions:
 
 ##### Epistemic Claim Architecture (ECA): 
 a process-oriented framework for representing and evaluating claims without collapsing uncertainty, disagreement, or contextual information into a single irreversible outcome.
