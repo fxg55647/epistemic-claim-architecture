@@ -99,6 +99,7 @@ Temporal Claim Branching (TCB) preserves multiple conditional future claim paths
 
 ### 7. What the system explicitly does NOT do
 ECA
+
 ​- ​Does not guarantee correctness: it guarantees traceability.
 - ​Does not eliminate uncertainty: it formalizes it.
 - ​Does not enforce consensus: it preserves disagreement.
