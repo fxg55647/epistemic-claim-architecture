@@ -2,7 +2,7 @@
 ## Quick Tech Specs   
 ### 0. Scope, intent and contributions
 
-**Problem:** How to make autonomous systems work with uncertain, conflicting, and evolving information without forcing it into a  single canonical truth. This applies wherever: claims cannot be conclusively verified at the time they are made, evidence is incomplete, ambiguous, or value-laden, and decisions must still be taken responsibly. Autonomous and automatic systems collapse probabilistic judgments into boolean truth too early. When a model treats a 0.9 confidence as true, subsequent reasoning compounds certainty implicitly, even though 0.9 × 0.9 × 0.9 × 0.9 represents materially lower confidence. This is analogous to performing multi-step calculations with prematurely rounded numbers.
+**Problem:** Autonomous systems struggle to navigate uncertain, conflicting, and evolving information without forcing it into a single, artificial canonical truth. In domains where evidence is incomplete or value-laden, current systems suffer from premature epistemic collapse: they convert probabilistic judgments into Boolean certainties too early in the reasoning chain. When a system treats 0.9 confidence as 1.0 (True), subsequent logic compounds this implicit certainty. This results in a "cascading rounding error" where 0.9^4 \approx 0.66 is treated as absolute truth, leading to fragile and unaccountable decision-making.
 
 **Approach:** Preserve uncertainty by representing reasoning as structured, versioned claim–evidence pairs. Claims, evidence, evaluations, and assumptions are explicitly documented, evaluated from multiple independent perspectives by a neutral witness, and linked into traceable reasoning chains rather than collapsed into a single truth assignment.
 
@@ -97,14 +97,15 @@ Immutability preserves process, not truth.
 
 Temporal Claim Branching (TCB) preserves multiple conditional future claim paths for claims whose consequences unfold over time. Unlike forecasting or scenario planning, branches are not merged into a single outcome before evidence resolves them. This enables conditional decision-making without narrative lock-in. In multi-agent negotiation, each party can propose multiple branches simultaneously, allowing counterparties to select preferred paths rather than negotiating single outcomes—transforming agreement from "find one acceptable solution" to "explore and commit to a compatible subset of the option space."
 
-### 7. What the system explicitly does NOT do 
-- Does not guarantee correctness 
-- Does not eliminate uncertainty 
-- Does not enforce consensus 
-- Does not replace human judgment 
-- Does not act as a truth oracle 
-
-Its value lies in making error, disagreement, and assumption visible. 
+### 7. What the system explicitly does NOT do
+​
+- ​Does not guarantee correctness: it guarantees traceability.
+- ​Does not eliminate uncertainty: it formalizes it.
+- ​Does not enforce consensus: it preserves disagreement.
+- ​Does not replace human judgment: it provides the evidentiary trail for it.
+- ​Does not act as a truth oracle: it acts as a transparent operator.
+- ​Does not discard data: it preserves the full context and provenance of every claim.
+​Its main value lies in making error, disagreement, and assumption visible.
 ### 8. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
 This architecture can be instantiated as follows. 
 Input (human-initiated) 
