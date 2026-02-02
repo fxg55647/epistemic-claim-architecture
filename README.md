@@ -2,7 +2,7 @@
 ## Quick Tech Specs   
 ### 0. Scope, intent and contributions
 
-**Problem:** Autonomous systems struggle to navigate uncertain, conflicting, and evolving information without forcing it into a single, artificial canonical truth. In domains where evidence is incomplete or value-laden, current systems suffer from premature epistemic collapse: they convert probabilistic judgments into Boolean certainties too early in the reasoning chain. When a system treats 0.9 confidence as 1.0 (True), subsequent logic compounds this implicit certainty. This results in a "cascading rounding error" where 0.9^4 \approx 0.66 is treated as absolute truth, leading to fragile and unaccountable decision-making.
+**Problem:** Autonomous systems struggle to navigate uncertain, conflicting, and evolving information without forcing it into a single, artificial canonical truth. In domains where evidence is incomplete or value-laden, current systems suffer from premature epistemic collapse: they convert probabilistic judgments into Boolean certainties too early in the reasoning chain. When a system treats 0.9 confidence as 1.0 (True), subsequent logic compounds this implicit certainty. This results in a "cascading rounding error" where 0.9⁴ ~ 0.66 is treated as absolute truth, leading to fragile and unaccountable decision-making.
 
 **Approach:** Preserve uncertainty by representing reasoning as structured, versioned claim–evidence pairs. Claims, evidence, evaluations, and assumptions are explicitly documented, evaluated from multiple independent perspectives by a neutral witness, and linked into traceable reasoning chains rather than collapsed into a single truth assignment.
 
