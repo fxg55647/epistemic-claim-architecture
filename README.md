@@ -98,14 +98,14 @@ Immutability preserves process, not truth.
 Temporal Claim Branching (TCB) preserves multiple conditional future claim paths for claims whose consequences unfold over time. Unlike forecasting or scenario planning, branches are not merged into a single outcome before evidence resolves them. This enables conditional decision-making without narrative lock-in. In multi-agent negotiation, each party can propose multiple branches simultaneously, allowing counterparties to select preferred paths rather than negotiating single outcomes—transforming agreement from "find one acceptable solution" to "explore and commit to a compatible subset of the option space."
 
 ### 7. What the system explicitly does NOT do
-​
-- ​Does not guarantee correctness: it guarantees traceability.
+​- ​Does not guarantee correctness: it guarantees traceability.
 - ​Does not eliminate uncertainty: it formalizes it.
 - ​Does not enforce consensus: it preserves disagreement.
 - ​Does not replace human judgment: it provides the evidentiary trail for it.
 - ​Does not act as a truth oracle: it acts as a transparent operator.
 - ​Does not discard data: it preserves the full context and provenance of every claim.
-​Its main value lies in making error, disagreement, and assumption visible.
+​
+Its main value lies in making error, disagreement, and assumption visible.
 ### 8. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
 This architecture can be instantiated as follows. 
 Input (human-initiated) 
