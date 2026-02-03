@@ -112,7 +112,7 @@ Temporal Claim Branching (TCB) preserves multiple conditional future claim paths
 - ​Does not replace human judgment: it provides the evidentiary trail for it.
 - ​Does not act as a truth oracle: it acts as a transparent operator.
 - ​Does not discard data: it preserves the full context and provenance of every claim.
-​
+
 Its main value lies in making error, disagreement, and assumption visible.
 ### 8. Example implementation: AI as Neutral Witness,  Arweave as claim register (with optional confidential evaluation) 
 This architecture can be instantiated as follows. 
