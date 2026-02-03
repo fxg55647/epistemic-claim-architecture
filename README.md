@@ -60,6 +60,7 @@ To prevent narrative lock-in, evaluations are designed to be stateless and indep
 	- 	human reviewers (no shared deliberation),
 	- 	automated systems, 
 	- 	or institutional audits.
+
 Statelessness prevents internally consistent but externally incorrect stories from forming. 
 
 ### 3a. Layered claim representations (fidelity vs accessibility)
