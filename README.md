@@ -60,12 +60,12 @@ To prevent narrative lock-in, evaluations are designed to be stateless and indep
 	- 	human reviewers (no shared deliberation),
 	- 	automated systems, 
 	- 	or institutional audits.
+Statelessness prevents internally consistent but externally incorrect stories from forming. 
 
 ### 3a. Layered claim representations (fidelity vs accessibility)
 
 Claims may have multiple representations at different levels of fidelity. A high-resolution representation preserves the full structure, scope, assumptions, and evaluation traces of a claim. Lower-resolution representations may be derived for speed, usability, or agent efficiency. Crucially, lower-resolution views are always derivations of the high-resolution record and never authoritative on their own. This prevents epistemic drift while allowing practical interaction.
 
-Statelessness prevents internally consistent but externally incorrect stories from forming. 
 ### 4. Triple-pass stateless evaluation (reference pattern) 
 A common evaluation pattern uses three independent passes: 
 1. Support analysis 
