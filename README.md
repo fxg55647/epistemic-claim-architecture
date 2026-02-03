@@ -21,7 +21,7 @@ a process-oriented framework for representing and evaluating claims without coll
 ##### Triple-pass stateless evaluation:
 a structured evaluation procedure that separates interpretation, support, and conflict analysis.
 ##### Zero-Knowledge Claim Evaluation (ZKCE):
-a method for verifiable claim evaluation without revealing the claim, evidence, or evaluation criteria.
+a method for verifiable evaluation of publicly known claims, where supporting evidence, auxiliary data, or evaluation criteria may be partially or fully concealed, while still proving that the claim was evaluated under defined rules.
 ##### Temporal Claim Branching (TCB):
 a method for maintaining multiple alternative futures as explicit, 
 parallel claim structures that can coexist until evidence resolves them, 
