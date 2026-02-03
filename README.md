@@ -1,12 +1,15 @@
 # An Epistemic Claim Architecture for Agents, Evidence, and Pluralistic Evaluation
+
+*This document consists of two parts: (1) **Quick Tech Specs**, which describes the concrete technical architecture and interfaces, and (2) **From Digital Monarchy to Republic: An Epistemic Claim Architecture Manifesto**, which outlines the broader conceptual and philosophical foundations of the approach.*
+
 ## Quick Tech Specs   
 ### 0. Scope, intent and contributions
 
 **Problem:** Autonomous systems struggle to navigate uncertain, conflicting, and evolving information without forcing it into a single, artificial canonical truth. In domains where evidence is incomplete or value-laden, current systems suffer from premature epistemic collapse: they convert probabilistic judgments into Boolean certainties too early in the reasoning chain. When a system treats 0.9 confidence as 1.0 (True), subsequent logic compounds this implicit certainty. This results in a "cascading rounding error" where 0.9⁴ ~ 0.66 is treated as absolute truth, leading to fragile and unaccountable decision-making.
 
-**Approach:** Preserve uncertainty by representing reasoning as structured, versioned claim–evidence pairs. Claims, evidence, evaluations, and assumptions are explicitly documented, evaluated from multiple independent perspectives by a neutral witness, and linked into traceable reasoning chains rather than collapsed into a single truth assignment.
+**Approach:** Preserve uncertainty by representing reasoning as structured, versioned claims with associated evidence sets, assumptions, and evaluations. Claims, evidence, evaluations, and assumptions are explicitly documented, evaluated from multiple independent perspectives by a neutral witness, and linked into traceable reasoning chains rather than collapsed into a single truth assignment.
 
-**Enables:** AI agents in accountability-critical tasks and blockchain systems beyond purely mathematical or financial domains.
+**Enables (when implemented rigorously):** AI agents in accountability-critical tasks and blockchain systems beyond purely mathematical or financial domains.
 
 That being said, ECA architecture or Neutral Witness is not AI-specific and not blockchain-dependent. 
 AI systems and blockchains are implementation tools, not defining features.
@@ -56,7 +59,11 @@ To prevent narrative lock-in, evaluations are designed to be stateless and indep
 - and produces a bounded assessment under explicit assumptions. This principle applies equally to: 
 	- 	human reviewers (no shared deliberation),
 	- 	automated systems, 
-	- 	or institutional audits. 
+	- 	or institutional audits.
+
+### 3a. Layered claim representations (fidelity vs accessibility)
+
+Claims may have multiple representations at different levels of fidelity. A high-resolution representation preserves the full structure, scope, assumptions, and evaluation traces of a claim. Lower-resolution representations may be derived for speed, usability, or agent efficiency. Crucially, lower-resolution views are always derivations of the high-resolution record and never authoritative on their own. This prevents epistemic drift while allowing practical interaction.
 
 Statelessness prevents internally consistent but externally incorrect stories from forming. 
 ### 4. Triple-pass stateless evaluation (reference pattern) 
