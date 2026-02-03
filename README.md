@@ -164,11 +164,11 @@ No single conclusion is forced.
 Disagreement is returned as structured output. 
 Recording (AI Flight Recorder)
 A permanent claim register is generated: 
--HTML report for human readers: 
-- summarizes each evaluation,
-- highlights
-	-  disagreements and assumptions, 
-	- explains where confidentiality limits disclosure. 
+- HTML report for human readers: 
+	- summarizes each evaluation,
+	- highlights
+		-  disagreements and assumptions, 
+		- explains where confidentiality limits disclosure. 
 - JSON record for machines: 
 	- includes structured evaluation outputs, 
 	- links related claims, 
